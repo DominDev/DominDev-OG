@@ -12,8 +12,7 @@ const path = require('path');
 // ============================================
 
 const FILES_TO_MINIFY = [
-  { input: 'style.css', output: 'style.min.css' },
-  { input: 'style-404.css', output: 'style-404.min.css' }
+  { input: 'src/css/style.css', output: 'src/css/style.min.css' }
 ];
 
 const ROOT_DIR = path.join(__dirname, '..');
