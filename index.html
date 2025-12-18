@@ -122,7 +122,7 @@
             </a>
             <div class="nav__links" id="navLinks" role="menubar">
                 <a href="#o-mnie" role="menuitem">O Mnie</a>
-                <a href="#filozofia" role="menuitem">Treningi</a>
+                <a href="#oferta" role="menuitem">Oferta</a>
                 <a href="#galeria" role="menuitem">Galeria</a>
                 <a href="#faq" role="menuitem">FAQ</a>
                 <a href="#kontakt" role="menuitem">Kontakt</a>
@@ -157,14 +157,20 @@
         </video>
         <div class="hero__overlay" aria-hidden="true"></div>
 
-        <div class="hero__content">
+        <div class="hero__content container">
+            <span class="hero__badge">
+                <i data-lucide="trophy" aria-hidden="true"></i>
+                2× Mistrz Polski
+            </span>
             <h1 class="hero__title">
-                Twój Cel.<br>
-                Twoja Walka.<br>
-                <span class="text-red">Twój Trener.</span>
+                <span class="hero__line"><span class="hero__static">Twój</span> <span class="hero__dynamic" id="heroTypewriter">TRENING</span></span>
             </h1>
+            <p class="hero__tagline">Moje wsparcie.</p>
             <p class="hero__subtitle">Profesjonalny boks we Wrocławiu. Indywidualne podejście. Mistrzowska forma.</p>
-            <a href="#kontakt" class="btn">Zarezerwuj Termin</a>
+            <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20trening."
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn">Umów Darmową Konsultację</a>
         </div>
     </header>
 
@@ -192,17 +198,12 @@
 
         <!-- About Section -->
         <section id="o-mnie" class="section-padding" aria-labelledby="about-title">
-            <div class="container about__grid">
-                <div class="about__image reveal">
-                    <img src="assets/img/originals/og-002.png"
-                         alt="Oskar Gajcowski z uniesioną ręką w geście zwycięstwa po wygranej walce bokserskiej"
-                         loading="lazy"
-                         width="600"
-                         height="800">
-                </div>
+            <div class="container about__grid about__grid--reversed">
                 <div class="about__content reveal">
                     <span class="about__label">Poznaj Trenera</span>
-                    <h2 id="about-title" class="about__title">Oskar Gajcowski</h2>
+                    <h2 id="about-title" class="about__title">
+                        Oskar <span class="text-red">Gajcowski</span>
+                    </h2>
                     <p class="about__text">Boks to moja największa pasja, którą rozwijam od ponad 15 lat. Jestem zawodowym pięściarzem, dwukrotnym Mistrzem Polski i trenerem, który zna ten sport od podszewki.</p>
                     <p class="about__text">Moja filozofia jest prosta: niezależnie od tego, czy jesteś zawodowcem, czy osobą, która pierwszy raz zakłada rękawice – znajdziesz u mnie miejsce. Dostosowuję trening do Twojej motoryki, kondycji i celów. Nie trenuję grup – skupiam się w 100% na Tobie.</p>
 
@@ -212,7 +213,67 @@
                         <li><i data-lucide="target" aria-hidden="true"></i> Specjalista od treningu indywidualnego</li>
                     </ul>
                     <br>
-                    <a href="#kontakt" class="btn btn--outline">Napisz do mnie</a>
+                    <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20trening."
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn btn--outline">Umów Darmową Konsultację</a>
+                </div>
+                <div class="about__image reveal">
+                    <img src="assets/img/originals/og-002.png"
+                         alt="Oskar Gajcowski z uniesioną ręką w geście zwycięstwa po wygranej walce bokserskiej"
+                         loading="lazy"
+                         width="600"
+                         height="800">
+                </div>
+            </div>
+        </section>
+
+        <!-- Obszary Współpracy / Offer -->
+        <section id="oferta" class="section-padding offer" aria-labelledby="offer-title">
+            <div class="container">
+                <header class="section-header section-header--left">
+                    <span class="section-header__label">Co Oferuję</span>
+                    <h2 id="offer-title" class="section-header__title">
+                        Obszary <span class="text-red">Współpracy</span>
+                    </h2>
+                </header>
+                <div class="offer__grid">
+                    <article class="offer__card reveal">
+                        <div class="offer__icon">
+                            <i data-lucide="swords" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="offer__title">Trening Techniczny</h3>
+                        <p class="offer__text">Klasyczny boks – ciosy, obrona, footwork, kombinacje. Buduję Twoją technikę od podstaw lub szlifuję istniejące umiejętności do poziomu zawodowego.</p>
+                        <ul class="offer__list">
+                            <li>Technika uderzeń i obrony</li>
+                            <li>Praca na łapach i worku</li>
+                            <li>Sparingi kontrolowane</li>
+                        </ul>
+                    </article>
+                    <article class="offer__card reveal">
+                        <div class="offer__icon">
+                            <i data-lucide="zap" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="offer__title">Przygotowanie Motoryczne</h3>
+                        <p class="offer__text">Siła, szybkość, wytrzymałość, koordynacja. Kompleksowe przygotowanie fizyczne dla sportowców i amatorów chcących być w najlepszej formie życia.</p>
+                        <ul class="offer__list">
+                            <li>Trening siłowy i plyometryczny</li>
+                            <li>Kondycja i wydolność</li>
+                            <li>Koordynacja i refleks</li>
+                        </ul>
+                    </article>
+                    <article class="offer__card reveal">
+                        <div class="offer__icon">
+                            <i data-lucide="flame" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="offer__title">Trening dla Amatorów</h3>
+                        <p class="offer__text">Nie musisz chcieć walczyć. Boks to najlepsza metoda na redukcję, budowę sylwetki i pewność siebie. Idealny dla osób szukających nowego wyzwania.</p>
+                        <ul class="offer__list">
+                            <li>Redukcja masy ciała</li>
+                            <li>Budowa kondycji i siły</li>
+                            <li>Nauka samoobrony</li>
+                        </ul>
+                    </article>
                 </div>
             </div>
         </section>
@@ -220,9 +281,11 @@
         <!-- Philosophy / Features -->
         <section id="filozofia" class="section-padding features" aria-labelledby="features-title">
             <div class="container">
-                <header class="section-header">
+                <header class="section-header section-header--left">
                     <span class="section-header__label">Dlaczego Warto</span>
-                    <h2 id="features-title" class="section-header__title">Nie Tylko Pot i Łzy</h2>
+                    <h2 id="features-title" class="section-header__title">
+                        Nie Tylko <span class="text-red">Pot i Łzy</span>
+                    </h2>
                 </header>
                 <div class="features__grid">
                     <article class="feature reveal">
@@ -316,9 +379,11 @@
         <!-- FAQ -->
         <section id="faq" class="section-padding" aria-labelledby="faq-title">
             <div class="container">
-                <header class="section-header">
+                <header class="section-header section-header--left">
                     <span class="section-header__label">Pytania i Odpowiedzi</span>
-                    <h2 id="faq-title" class="section-header__title">Warto Wiedzieć</h2>
+                    <h2 id="faq-title" class="section-header__title">
+                        Warto <span class="text-red">Wiedzieć</span>
+                    </h2>
                 </header>
                 <div class="faq__container" role="region" aria-label="Często zadawane pytania">
                     <div class="faq__item">
@@ -357,6 +422,54 @@
                             <p>Wystarczy wygodny strój sportowy, buty na zmianę i woda. Sprzęt bokserski na początek zapewniam ja.</p>
                         </div>
                     </div>
+                    <div class="faq__item">
+                        <button class="faq__question"
+                                aria-expanded="false"
+                                aria-controls="faq-answer-4"
+                                id="faq-question-4">
+                            Czy boks jest bezpieczny? Boję się kontuzji.
+                            <i data-lucide="chevron-down" class="faq__icon" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq__answer" id="faq-answer-4" role="region" aria-labelledby="faq-question-4">
+                            <p>Na treningach personalnych masz pełną kontrolę nad intensywnością. Nie ma sparingów, dopóki nie będziesz gotowy i sam tego nie zechcesz. Jako zawodowy pięściarz wiem, jak trenować bezpiecznie i skutecznie.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <button class="faq__question"
+                                aria-expanded="false"
+                                aria-controls="faq-answer-5"
+                                id="faq-question-5">
+                            Czy muszę kupić własne rękawice?
+                            <i data-lucide="chevron-down" class="faq__icon" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq__answer" id="faq-answer-5" role="region" aria-labelledby="faq-question-5">
+                            <p>Na początek nie – mam sprzęt dla początkujących. Jeśli zdecydujesz się kontynuować, pomogę Ci dobrać odpowiednie rękawice i bandaże dopasowane do Twoich potrzeb.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <button class="faq__question"
+                                aria-expanded="false"
+                                aria-controls="faq-answer-6"
+                                id="faq-question-6">
+                            Jak wygląda parking i szatnia?
+                            <i data-lucide="chevron-down" class="faq__icon" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq__answer" id="faq-answer-6" role="region" aria-labelledby="faq-question-6">
+                            <p>Klub Awangarda 71 dysponuje szatniami z prysznicami. Parking znajduje się przy ulicy – na Ołbińskiej jest kilka miejsc bezpłatnych, a w pobliżu płatna strefa.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <button class="faq__question"
+                                aria-expanded="false"
+                                aria-controls="faq-answer-7"
+                                id="faq-question-7">
+                            Jak często powinienem trenować?
+                            <i data-lucide="chevron-down" class="faq__icon" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq__answer" id="faq-answer-7" role="region" aria-labelledby="faq-question-7">
+                            <p>Dla początkujących rekomenduję 2-3 treningi tygodniowo. Daje to czas na regenerację i pozwala ciału adaptować się do nowego wysiłku. Częstotliwość ustalimy indywidualnie podczas konsultacji.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -364,15 +477,27 @@
         <!-- Contact -->
         <section id="kontakt" class="contact" aria-labelledby="contact-title">
             <div class="contact__grid">
-                <!-- Map -->
+                <!-- Google Maps Embed -->
                 <div class="contact__map">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.656779354728!2d17.03755331575567!3d51.11475797957262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fc2765b44e4a1%3A0x9f4f2c7d8e4a7b2c!2sAwangarda%2071!5e0!3m2!1spl!2spl!4v1703001234567!5m2!1spl!2spl"
-                        title="Lokalizacja Klubu Awangarda 71 na mapie Google"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.8!2d17.0355!3d51.1148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fc2785b1d5d6f%3A0x9b8b1b8b8b8b8b8b!2sKlub%20Sportowy%20Awangarda%2071!5e0!3m2!1spl!2spl!4v1703000000000!5m2!1spl!2spl&markers=color:red%7C51.114757,17.037553"
+                        width="100%"
+                        height="100%"
+                        style="border:0; filter: grayscale(80%) contrast(1.1);"
+                        allowfullscreen=""
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
-                        allowfullscreen>
+                        title="Lokalizacja Klubu Sportowego Awangarda 71 na mapie Google"
+                        aria-label="Mapa Google pokazująca lokalizację Klubu Sportowego Awangarda 71 we Wrocławiu">
                     </iframe>
+                    <a href="https://maps.app.goo.gl/Awangarda71Wroclaw"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="contact__map-overlay"
+                       aria-label="Otwórz w Google Maps">
+                        <i data-lucide="navigation" aria-hidden="true"></i>
+                        <span>Nawiguj</span>
+                    </a>
                 </div>
 
                 <div class="contact__info">
@@ -406,7 +531,7 @@
                        target="_blank"
                        rel="noopener noreferrer"
                        aria-label="Napisz na WhatsApp (otwiera nowe okno)">
-                        Napisz na WhatsApp
+                        Umów Darmową Konsultację
                     </a>
 
                     <div class="social">
@@ -437,13 +562,20 @@
         </div>
     </footer>
 
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Przewiń na górę strony">
+        <i data-lucide="arrow-up" aria-hidden="true"></i>
+    </button>
+
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20trening."
        class="floating-wa"
        target="_blank"
        rel="noopener noreferrer"
        aria-label="Napisz na WhatsApp">
-        <i data-lucide="message-circle" aria-hidden="true"></i>
+        <svg class="floating-wa__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
     </a>
 
     <!-- Scripts -->
