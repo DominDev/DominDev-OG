@@ -25,7 +25,8 @@
       "Bash(git log:*)",
       "Bash(git show:*)",
       "Bash(wc:*)",
-      "Bash(dir /s \"d:\\\\ProgramData\\\\DominDev\\\\DominDev-OG\\\\assets\")"
+      "Bash(dir /s \"d:\\\\ProgramData\\\\DominDev\\\\DominDev-OG\\\\assets\")",
+      "Bash(findstr:*)"
     ],
     "ask": [
       "Read(./.env)",
