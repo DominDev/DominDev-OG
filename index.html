@@ -48,7 +48,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="src/css/style.css">
@@ -111,6 +111,56 @@
     </script>
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+        <div class="preloader__content">
+            <div class="preloader__glove">
+                <svg viewBox="0 0 100 100" class="preloader__svg" aria-hidden="true">
+                    <!-- Boxing glove shape -->
+                    <defs>
+                        <linearGradient id="gloveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#D22B2B;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#a01b1b;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="glowFilter">
+                            <feGaussianBlur stdDeviation="2" result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <!-- Glove body -->
+                    <path class="preloader__glove-main"
+                          d="M25,70 Q15,55 20,40 Q25,25 45,20 Q65,15 75,30 Q85,45 80,60 Q75,75 60,80 Q45,85 30,80 Z"
+                          fill="url(#gloveGradient)"
+                          filter="url(#glowFilter)"/>
+                    <!-- Glove thumb -->
+                    <ellipse class="preloader__glove-thumb"
+                             cx="28" cy="38" rx="8" ry="12"
+                             fill="url(#gloveGradient)"
+                             transform="rotate(-30 28 38)"/>
+                    <!-- Wrist band -->
+                    <rect class="preloader__glove-wrist"
+                          x="35" y="78" width="30" height="12" rx="3"
+                          fill="#1a1a1a" stroke="var(--color-accent-gold)" stroke-width="1"/>
+                    <!-- Laces -->
+                    <line x1="42" y1="80" x2="42" y2="88" stroke="#333" stroke-width="1.5"/>
+                    <line x1="50" y1="80" x2="50" y2="88" stroke="#333" stroke-width="1.5"/>
+                    <line x1="58" y1="80" x2="58" y2="88" stroke="#333" stroke-width="1.5"/>
+                </svg>
+            </div>
+            <div class="preloader__text">
+                <span class="preloader__word">LOADING</span>
+                <div class="preloader__dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Skip to main content for accessibility -->
     <a href="#main" class="skip-link">Przejdź do głównej treści</a>
 
@@ -126,7 +176,7 @@
                 <a href="#galeria" role="menuitem">Galeria</a>
                 <a href="#faq" role="menuitem">FAQ</a>
                 <a href="#kontakt" role="menuitem">Kontakt</a>
-                <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20trening."
+                <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20darmowy%20trening%20wst%C4%99pny."
                    target="_blank"
                    rel="noopener noreferrer"
                    class="nav__cta"
@@ -134,6 +184,23 @@
                    aria-label="Rezerwacja przez WhatsApp (otwiera nowe okno)">
                     Rezerwacja
                 </a>
+                <!-- Mobile Menu Social Icons -->
+                <div class="nav__social">
+                    <a href="https://www.instagram.com/oskar.gajcowski"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="nav__social-link"
+                       aria-label="Instagram">
+                        <i data-lucide="instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=100086608413722"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="nav__social-link"
+                       aria-label="Facebook">
+                        <i data-lucide="facebook" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
             <button class="nav__menu-btn"
                     aria-label="Otwórz menu nawigacji"
@@ -163,14 +230,14 @@
                 2× Mistrz Polski
             </span>
             <h1 class="hero__title">
-                <span class="hero__line"><span class="hero__static">Twój</span> <span class="hero__dynamic" id="heroTypewriter">TRENING</span></span>
+                <span class="hero__line"><span class="hero__static">Twoja</span> <span class="hero__dynamic" id="heroTypewriter">WALKA</span></span>
             </h1>
             <p class="hero__tagline">Moje wsparcie.</p>
             <p class="hero__subtitle">Profesjonalny boks we Wrocławiu. Indywidualne podejście. Mistrzowska forma.</p>
-            <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20trening."
+            <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20darmowy%20trening%20wst%C4%99pny."
                    target="_blank"
                    rel="noopener noreferrer"
-                   class="btn">Umów Darmową Konsultację</a>
+                   class="btn">Umów Darmowy Trening</a>
         </div>
     </header>
 
@@ -213,10 +280,10 @@
                         <li><i data-lucide="target" aria-hidden="true"></i> Specjalista od treningu indywidualnego</li>
                     </ul>
                     <br>
-                    <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20trening."
+                    <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20darmowy%20trening%20wst%C4%99pny."
                        target="_blank"
                        rel="noopener noreferrer"
-                       class="btn btn--outline">Umów Darmową Konsultację</a>
+                       class="btn btn--outline">Umów Darmowy Trening</a>
                 </div>
                 <div class="about__image reveal">
                     <img src="assets/img/originals/og-002.png"
@@ -480,22 +547,22 @@
                 <!-- Google Maps Embed -->
                 <div class="contact__map">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.8!2d17.0355!3d51.1148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fc2785b1d5d6f%3A0x9b8b1b8b8b8b8b8b!2sKlub%20Sportowy%20Awangarda%2071!5e0!3m2!1spl!2spl!4v1703000000000!5m2!1spl!2spl&markers=color:red%7C51.114757,17.037553"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.123456!2d17.037553!3d51.114757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fc275f1c8c96f%3A0x8f8c8c8c8c8c8c8c!2sO%C5%82bi%C5%84ska%2019B%2C%2050-237%20Wroc%C5%82aw!5e0!3m2!1spl!2spl!4v1734500000000!5m2!1spl!2spl"
                         width="100%"
                         height="100%"
-                        style="border:0; filter: grayscale(80%) contrast(1.1);"
+                        style="border:0;"
                         allowfullscreen=""
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
                         title="Lokalizacja Klubu Sportowego Awangarda 71 na mapie Google"
                         aria-label="Mapa Google pokazująca lokalizację Klubu Sportowego Awangarda 71 we Wrocławiu">
                     </iframe>
-                    <a href="https://maps.app.goo.gl/Awangarda71Wroclaw"
+                    <a href="https://maps.app.goo.gl/pUMzGooACvu9YHpt7"
                        target="_blank"
                        rel="noopener noreferrer"
                        class="contact__map-overlay"
                        aria-label="Otwórz w Google Maps">
-                        <i data-lucide="navigation" aria-hidden="true"></i>
+                        <i data-lucide="map-pin" aria-hidden="true"></i>
                         <span>Nawiguj</span>
                     </a>
                 </div>
@@ -504,7 +571,7 @@
                     <h2 id="contact-title" class="contact__title">
                         Zacznijmy<br><span class="text-red">Trening</span>
                     </h2>
-                    <p class="contact__subtitle">Nie czekaj na "odpowiedni moment". Umów się na darmową konsultację i sprawdź, co możemy razem osiągnąć.</p>
+                    <p class="contact__subtitle">Nie czekaj na "odpowiedni moment". Umów się na darmowy trening wstępny i sprawdź, co możemy razem osiągnąć.</p>
 
                     <address class="contact__details">
                         <div class="contact__row">
@@ -526,12 +593,12 @@
                         </div>
                     </address>
 
-                    <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20trening."
+                    <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20darmowy%20trening%20wst%C4%99pny."
                        class="btn"
                        target="_blank"
                        rel="noopener noreferrer"
                        aria-label="Napisz na WhatsApp (otwiera nowe okno)">
-                        Umów Darmową Konsultację
+                        Umów Darmowy Trening
                     </a>
 
                     <div class="social">
@@ -558,25 +625,73 @@
     <!-- Footer -->
     <footer class="footer" role="contentinfo">
         <div class="container">
-            <p class="footer__text">&copy; 2025 Oskar Gajcowski. Wszelkie prawa zastrzeżone.</p>
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="#" class="footer__logo">
+                        OSKAR <span>GAJCOWSKI</span>
+                    </a>
+                    <p class="footer__tagline">Trener Personalny Boksu</p>
+                </div>
+                <div class="footer__links">
+                    <a href="#o-mnie">O Mnie</a>
+                    <a href="#oferta">Oferta</a>
+                    <a href="#galeria">Galeria</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#kontakt">Kontakt</a>
+                </div>
+                <div class="footer__social">
+                    <a href="https://www.instagram.com/oskar.gajcowski"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="footer__social-link"
+                       aria-label="Instagram">
+                        <i data-lucide="instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=100086608413722"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="footer__social-link"
+                       aria-label="Facebook">
+                        <i data-lucide="facebook" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Oskar Gajcowski. Wszelkie prawa zastrzeżone.</p>
+                <p class="footer__credit">
+                    Realizacja: <a href="https://domindev.com" target="_blank" rel="noopener noreferrer">DominDev</a>
+                </p>
+            </div>
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" id="scrollToTop" aria-label="Przewiń na górę strony">
-        <i data-lucide="arrow-up" aria-hidden="true"></i>
-    </button>
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor" aria-hidden="true">
+        <div class="cursor__dot"></div>
+        <div class="cursor__ring"></div>
+    </div>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20trening."
-       class="floating-wa"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Napisz na WhatsApp">
-        <svg class="floating-wa__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-    </a>
+    <!-- Floating HUD Controls -->
+    <div class="floating-hud">
+        <!-- Scroll To Top with Progress Ring -->
+        <button id="scrollToTop" class="hud-btn hud-btn--scroll" aria-label="Przewiń na górę strony">
+            <svg class="progress-ring" width="50" height="50" viewBox="0 0 50 50" aria-hidden="true">
+                <circle class="progress-ring__track" stroke-width="2" fill="transparent" r="23" cx="25" cy="25"/>
+                <circle class="progress-ring__circle" stroke-width="2" fill="transparent" r="23" cx="25" cy="25"/>
+            </svg>
+            <i data-lucide="arrow-up" aria-hidden="true"></i>
+        </button>
+
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20darmowy%20trening%20wst%C4%99pny."
+           class="hud-btn hud-btn--wa"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Napisz na WhatsApp">
+            <div class="hud-btn__dot" aria-hidden="true"></div>
+            <i data-lucide="message-circle" aria-hidden="true"></i>
+        </a>
+    </div>
 
     <!-- Scripts -->
     <script src="src/js/config.js"></script>

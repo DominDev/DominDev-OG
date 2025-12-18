@@ -3,6 +3,9 @@
  * Vanilla JS, no dependencies except Lucide icons
  */
 
+// Initialize preloader immediately
+initPreloader();
+
 document.addEventListener('DOMContentLoaded', () => {
   initIcons();
   initFAQ();
@@ -15,7 +18,28 @@ document.addEventListener('DOMContentLoaded', () => {
   initStaggeredReveals();
   initHeroTypewriter();
   initScrollToTop();
+  initScrollSpy();
+  initCustomCursor();
 });
+
+/**
+ * Preloader - hides after page load
+ */
+function initPreloader() {
+  window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      // Minimum display time for visual effect
+      setTimeout(() => {
+        preloader.classList.add('hidden');
+        // Remove from DOM after transition
+        setTimeout(() => {
+          preloader.remove();
+        }, 500);
+      }, 800);
+    }
+  });
+}
 
 /**
  * Initialize Lucide Icons
@@ -35,27 +59,31 @@ function initFAQ() {
 
   faqItems.forEach(item => {
     const question = item.querySelector('.faq__question');
+    const answer = item.querySelector('.faq__answer');
 
     question.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
-      const answer = item.querySelector('.faq__answer');
 
-      // Close all other items
+      // Close all other items with smooth animation
       faqItems.forEach(otherItem => {
         if (otherItem !== item) {
           otherItem.classList.remove('active');
           const otherQuestion = otherItem.querySelector('.faq__question');
+          const otherAnswer = otherItem.querySelector('.faq__answer');
           otherQuestion.setAttribute('aria-expanded', 'false');
+          otherAnswer.style.maxHeight = '0';
         }
       });
 
-      // Toggle current item
+      // Toggle current item with dynamic height
       if (!isActive) {
         item.classList.add('active');
         question.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
       } else {
         item.classList.remove('active');
         question.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = '0';
       }
     });
 
@@ -473,7 +501,7 @@ function initHeroTypewriter() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
 
-  const words = ['TRENING', 'WALKA', 'SIŁA', 'FORMA', 'WYGRANA'];
+  const words = ['WALKA', 'SIŁA', 'FORMA', 'WYGRANA', 'PASJA'];
   let wordIndex = 0;
   let charIndex = words[0].length;
   let isDeleting = true;
@@ -520,28 +548,81 @@ function initHeroTypewriter() {
 }
 
 /**
- * Scroll to Top Button
- * Shows/hides button based on scroll position
+ * Scroll Spy - Highlight active nav link based on scroll position
+ */
+function initScrollSpy() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav__links a[href^="#"]');
+
+  if (sections.length === 0 || navLinks.length === 0) return;
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -70% 0px',
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const activeId = entry.target.getAttribute('id');
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${activeId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => observer.observe(section));
+}
+
+/**
+ * Scroll to Top Button with Progress Ring
+ * Shows/hides button based on scroll position and updates progress ring
  */
 function initScrollToTop() {
   const scrollBtn = document.getElementById('scrollToTop');
   if (!scrollBtn) return;
 
-  const scrollThreshold = 400;
+  const progressCircle = scrollBtn.querySelector('.progress-ring__circle');
+  const scrollThreshold = 300;
 
-  const toggleVisibility = () => {
+  // Calculate circumference for progress ring (r=23, circumference = 2 * PI * r)
+  const radius = 23;
+  const circumference = radius * 2 * Math.PI;
+
+  if (progressCircle) {
+    progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+    progressCircle.style.strokeDashoffset = circumference;
+  }
+
+  const onScroll = () => {
+    // Show/hide button
     if (window.scrollY > scrollThreshold) {
       scrollBtn.classList.add('visible');
     } else {
       scrollBtn.classList.remove('visible');
     }
+
+    // Update progress ring
+    if (progressCircle) {
+      const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollCurrent = window.scrollY;
+      const scrollPercentage = scrollTotal > 0 ? scrollCurrent / scrollTotal : 0;
+      const offset = circumference - (scrollPercentage * circumference);
+      progressCircle.style.strokeDashoffset = offset;
+    }
   };
 
-  // Check initial state
-  toggleVisibility();
-
   // Listen for scroll with passive for performance
-  window.addEventListener('scroll', toggleVisibility, { passive: true });
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Initial state
+  onScroll();
 
   // Scroll to top on click
   scrollBtn.addEventListener('click', () => {
@@ -557,5 +638,99 @@ function initScrollToTop() {
       e.preventDefault();
       scrollBtn.click();
     }
+  });
+}
+
+/**
+ * Custom Cursor
+ * Follows mouse with smooth lag, changes on interactive elements
+ */
+function initCustomCursor() {
+  const cursor = document.getElementById('cursor');
+  if (!cursor) return;
+
+  // Check for touch device or small screen
+  const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+  const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+
+  if (isTouchDevice || isSmallScreen) {
+    cursor.style.display = 'none';
+    return;
+  }
+
+  // Hide default cursor
+  document.body.style.cursor = 'none';
+
+  let mouseX = 0;
+  let mouseY = 0;
+  let cursorX = 0;
+  let cursorY = 0;
+
+  // Track mouse position
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  // Smooth cursor animation
+  function animateCursor() {
+    const speed = 0.15;
+
+    cursorX += (mouseX - cursorX) * speed;
+    cursorY += (mouseY - cursorY) * speed;
+
+    cursor.style.left = `${cursorX}px`;
+    cursor.style.top = `${cursorY}px`;
+
+    requestAnimationFrame(animateCursor);
+  }
+
+  animateCursor();
+
+  // Interactive elements hover state
+  const interactiveElements = document.querySelectorAll('a, button, .gallery__item, .faq__question, input, textarea, select');
+
+  interactiveElements.forEach(el => {
+    el.style.cursor = 'none';
+
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('cursor--hover');
+    });
+
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('cursor--hover');
+    });
+  });
+
+  // Text input hover state
+  const textElements = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
+
+  textElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.remove('cursor--hover');
+      cursor.classList.add('cursor--text');
+    });
+
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('cursor--text');
+    });
+  });
+
+  // Click state
+  document.addEventListener('mousedown', () => {
+    cursor.classList.add('cursor--click');
+  });
+
+  document.addEventListener('mouseup', () => {
+    cursor.classList.remove('cursor--click');
+  });
+
+  // Hide cursor when leaving window
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+  });
+
+  document.addEventListener('mouseenter', () => {
+    cursor.style.opacity = '1';
   });
 }
