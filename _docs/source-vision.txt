@@ -1,0 +1,82 @@
+Wizja projektu.
+
+Koncepcja wizualna i funkcjonalna: "Champion's Corner"
+Zamiast standardowego, jasnego layoutu, proponuję Dark Premium Mode. Boks to sport charakteru, cienia i światła ringowego.
+
+Styl (Look & Feel):
+
+Dominanta: Głęboka czerń (#0a0a0a) i ciemny grafit – to buduje prestiż i męski charakter.
+
+Akcenty:
+
+Karmazynowa czerwień (inspirowana narożnikiem ringu) – dla przycisków CTA ("Zarezerwuj").
+
+Złoto/Mosiądz – delikatne detale (linie, ikony) podkreślające status Mistrza Polski.
+
+Typografia:
+
+Nagłówki: Oswald lub Teko – wysokie, "krzyczące", jak na plakatach walk zawodowych.
+
+Tekst: Inter – czytelny, techniczny, nowoczesny.
+
+Layout Sekcji:
+
+Hero (Ekran powitalny): Wideo w tle (przyciemnione), na pierwszym planie mocne hasło: "Twoja Walka. Twój Cel. Twój Trener." + przycisk CTA.
+
+Stats Bar: Pasek z liczbami: 15 lat, 150 walk, 2x Mistrz.
+
+O Mnie: Zdjęcie z podniesioną ręką (og-002.png) + historia Oskara.
+
+Filozofia (Dlaczego Oskar): Karty z ikonami (Indywidualizm, Technika, Kondycja).
+
+Galeria: "Wall of Fame" – kafelkowy układ zdjęć z ringu i treningów.
+
+FAQ: Accordion (rozwijane pytania) – czyste i minimalistyczne.
+
+Lokalizacja i Kontakt: Ciemna, stylizowana mapa (Dark Mode) + wielki przycisk WhatsApp.
+
+Technologia:
+
+Czysty HTML5/CSS3 dla błyskawicznego ładowania.
+
+Lekkie animacje "Fade In" przy scrollowaniu (dodają dynamiki, nie obciążają).
+
+##########################################################################
+
+TEMAT: Koncepcja strony wizerunkowej "Oskar Gajcowski – Personal Boxing Coach"
+
+CEL PROJEKTU: Stworzenie nowoczesnej wizytówki online (Landing Page), która nie tylko informuje, ale przede wszystkim buduje autorytet Trenera i konwertuje odwiedzających na klientów treningów personalnych. Strona ma odzwierciedlać klasę "Premium" – to nie są zwykłe zajęcia fitness, to profesjonalny boks z Mistrzem Polski.
+
+GRUPA DOCELOWA: Podejście hybrydowe. Oferta skierowana zarówno do amatorów chcących poprawić sylwetkę/pewność siebie, jak i osób zaawansowanych szukających technicznego szlifu. Kluczowy przekaz: "Niezależnie od formy startowej, Oskar dopasuje trening do Ciebie".
+
+STRATEGIA WIZUALNA (DARK MODE PREMIUM):
+
+Kolorystyka: Dominująca czerń (elegancja, siła), Czerwień (energia, walka), Złoto (mistrzostwo).
+
+Klimat: Zdjęcia i wideo grają główną rolę. Strona ma wyglądać jak zapowiedź walki wieczoru.
+
+UX (Doświadczenie użytkownika): Maksymalne uproszczenie ścieżki klienta. Brak cennika (wymusza kontakt), jeden główny cel: przekierowanie rozmowy na WhatsApp/Telefon.
+
+STRUKTURA STRONY:
+
+Hero Section: Wideo w tle, mocny nagłówek, natychmiastowe wezwanie do działania.
+
+Liczby nie kłamią: Wyeksponowanie 15 lat doświadczenia i tytułów mistrzowskich.
+
+O Trenerze: Budowanie zaufania poprzez historię zawodniczą.
+
+Metodologia: Wyjaśnienie, że trening jest "szyty na miarę".
+
+Galeria: Dowód społeczny i wizualny (zdjęcia z ringu i treningów).
+
+FAQ: Odpowiedzi na obiekcje (np. "czy muszę być w formie?").
+
+Kontakt: Mapa dojazdu (stylizowana) + szybki kontakt.
+
+ROZWIĄZANIA TECHNICZNE:
+
+High-Performance Code: Strona ultra-lekka i szybka.
+
+Mobile First: Projektowana z myślą o telefonach (tam klienci szukają trenera).
+
+Integracja Social Media & WhatsApp.
