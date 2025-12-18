@@ -1,0 +1,57 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch",
+      "WebSearch",
+      "Bash(test:*)",
+      "Bash(dir:*)",
+      "Bash(git add:*)",
+      "Bash(node -e:*)",
+      "Bash(current-password)",
+      "Bash(node _scripts/download-and-optimize-products.js:*)",
+      "Bash(node _scripts/download-product-images-pexels.js:*)",
+      "Bash(node _scripts/optimize-images.js:*)",
+      "Bash(git config:*)",
+      "Bash(grep:*)",
+      "Bash(start http://localhost:8080)",
+      "Bash(python -m http.server:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(npm run *)",
+      "Bash(npm -v)",
+      "Bash(node -v)",
+      "Bash(git diff:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(wc:*)",
+      "Bash(dir /s \"d:\\\\ProgramData\\\\DominDev\\\\DominDev-OG\\\\assets\")"
+    ],
+    "ask": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./config/credentials.json)",
+      "Edit(./.env)",
+      "Edit(./.env.*)",
+      "Edit(./secrets/**)",
+      "Edit(./config/credentials.json)",
+      "Write(./.env)",
+      "Write(./.env.*)",
+      "Write(./secrets/**)",
+      "Write(./config/credentials.json)",
+      "Bash(curl:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "env": {
+    "MAX_THINKING_TOKENS": "4096",
+    "BASH_DEFAULT_TIMEOUT_MS": "600000",
+    "BASH_MAX_TIMEOUT_MS": "900000",
+    "BASH_MAX_OUTPUT_LENGTH": "80000",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1"
+  }
+}
