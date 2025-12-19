@@ -23,6 +23,16 @@
   box-shadow: inset 0 0 150px rgba(180, 0, 0, 0.15);
 }
 
+/* Lock scroll and hide scrollbar when preloader is active */
+body:has(.preloader:not(.hidden)) {
+  overflow: hidden;
+}
+
+/* Fallback for browsers without :has() support */
+body.preloader-active {
+  overflow: hidden;
+}
+
 .preloader.hidden {
   display: none;
 }
@@ -618,6 +628,7 @@ img {
 .nav__links {
   display: flex;
   gap: 30px;
+  align-items: center;
 }
 
 .nav__links a {
@@ -658,6 +669,30 @@ img {
   font-weight: bold !important;
 }
 
+/* Rezerwacja as button style - desktop nav (same as .btn but smaller) */
+.nav__cta--btn {
+  display: inline-block;
+  background-color: var(--color-accent-red);
+  color: var(--color-white) !important;
+  padding: 6px 20px;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 2px solid var(--color-accent-red);
+  cursor: pointer;
+  transition: var(--transition-base);
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+}
+
+.nav__cta--btn:hover,
+.nav__cta--btn:focus {
+  background-color: transparent;
+  color: var(--color-accent-red) !important;
+  box-shadow: 0 0 15px rgba(210, 43, 43, 0.4), 0 0 30px rgba(210, 43, 43, 0.2);
+  text-shadow: 0 0 8px rgba(210, 43, 43, 0.4);
+}
+
 .nav__menu-btn {
   display: none;
   background: none;
@@ -665,11 +700,63 @@ img {
   color: var(--color-white);
   cursor: pointer;
   padding: var(--spacing-sm);
+  position: relative;
+  z-index: 1001;
+  width: 44px;
+  height: 44px;
 }
 
 .nav__menu-btn:focus-visible {
   outline: 2px solid var(--color-accent-gold);
   outline-offset: 2px;
+}
+
+/* Animated hamburger icon */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.hamburger__line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-white);
+  transition: all 0.3s ease;
+  position: absolute;
+}
+
+.hamburger__line:nth-child(1) {
+  top: 6px;
+}
+
+.hamburger__line:nth-child(2) {
+  top: 11px;
+}
+
+.hamburger__line:nth-child(3) {
+  top: 16px;
+}
+
+/* Transform to X when menu is open */
+.nav__menu-btn[aria-expanded="true"] .hamburger__line:nth-child(1) {
+  top: 11px;
+  transform: rotate(45deg);
+}
+
+.nav__menu-btn[aria-expanded="true"] .hamburger__line:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.nav__menu-btn[aria-expanded="true"] .hamburger__line:nth-child(3) {
+  top: 11px;
+  transform: rotate(-45deg);
 }
 
 /* Mobile Menu Social Icons - hidden on desktop */
@@ -1503,22 +1590,13 @@ img {
   color: var(--color-accent-red);
 }
 
-/* CTA Button with Glow Effect */
+/* CTA Button with Glow Effect - unified with hero button */
 .btn--glow {
-  clip-path: polygon(
-    15px 0,
-    100% 0,
-    100% calc(100% - 15px),
-    calc(100% - 15px) 100%,
-    0 100%,
-    0 15px
-  );
   width: auto;
   align-self: flex-start;
 }
 
 .btn--glow:hover {
-  background-color: #ff0a33;
   box-shadow: 0 0 30px rgba(210, 43, 43, 0.6);
   transform: translateY(-2px) scale(1.02);
 }
@@ -1922,8 +2000,8 @@ img {
 
   .contact__info {
     padding: 60px 20px;
-    text-align: center;
-    align-items: center;
+    text-align: left;
+    align-items: flex-start;
   }
 
   .contact__map-container {
@@ -1943,17 +2021,16 @@ img {
     max-width: 100%;
   }
 
-  /* Keep details left-aligned for readability */
   .contact__row {
     text-align: left;
   }
 
   .btn--glow {
-    align-self: center;
+    align-self: flex-start;
   }
 
   .social {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   /* Nav button adjustment for smaller screens */
@@ -1997,8 +2074,30 @@ img {
     letter-spacing: 2px;
   }
 
+  /* Rezerwacja button in mobile menu - same style as .btn but compact */
+  .nav__links .nav__cta--btn {
+    margin-top: var(--spacing-lg);
+    padding: 8px 24px;
+    font-size: 0.95rem;
+    background-color: var(--color-accent-red);
+    color: var(--color-white) !important;
+    border: 2px solid var(--color-accent-red);
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    width: auto;
+    align-self: center;
+  }
+
+  .nav__links .nav__cta--btn:hover {
+    background-color: transparent;
+    color: var(--color-accent-red) !important;
+    box-shadow: 0 0 15px rgba(210, 43, 43, 0.4), 0 0 30px rgba(210, 43, 43, 0.2);
+    text-shadow: 0 0 8px rgba(210, 43, 43, 0.4);
+  }
+
   .nav__menu-btn {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /* Mobile Menu Social Icons */
@@ -2006,8 +2105,8 @@ img {
     display: flex;
     gap: var(--spacing-md);
     justify-content: center;
-    margin-top: auto;
-    padding-bottom: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
   }
 
   .nav__social-link {
@@ -2048,12 +2147,21 @@ img {
     text-align: left;
   }
 
+  /* Brighten video on mobile - balanced */
+  .hero__video {
+    filter: brightness(0.5) contrast(1.1);
+  }
+
+  .hero__overlay {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
   .hero__line {
-    font-size: clamp(2.8rem, 9vw, 4rem);
+    font-size: clamp(2.5rem, 12vw, 4rem);
   }
 
   .hero__tagline {
-    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-size: clamp(1.3rem, 5vw, 2rem);
   }
 
   .hero__subtitle {
@@ -2118,15 +2226,15 @@ img {
   }
 
   .hero__line {
-    font-size: 2.2rem;
+    font-size: clamp(2.2rem, 14vw, 3rem);
   }
 
   .hero__tagline {
-    font-size: 1.1rem;
+    font-size: clamp(1.1rem, 5vw, 1.5rem);
   }
 
   .hero__subtitle {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .stats__item h3 {
@@ -2215,11 +2323,11 @@ img {
   }
 
   .hero__line {
-    font-size: 1.8rem;
+    font-size: clamp(1.8rem, 13vw, 2.5rem);
   }
 
   .hero__tagline {
-    font-size: 1rem;
+    font-size: clamp(0.95rem, 4vw, 1.2rem);
   }
 
   .nav__logo {

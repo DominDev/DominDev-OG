@@ -146,7 +146,7 @@
                 <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20darmowy%20trening%20wst%C4%99pny."
                    target="_blank"
                    rel="noopener noreferrer"
-                   class="nav__cta"
+                   class="nav__cta nav__cta--btn"
                    role="menuitem"
                    aria-label="Rezerwacja przez WhatsApp (otwiera nowe okno)">
                     Rezerwacja
@@ -173,7 +173,11 @@
                     aria-label="Otwórz menu nawigacji"
                     aria-expanded="false"
                     aria-controls="navLinks">
-                <i data-lucide="menu" aria-hidden="true"></i>
+                <span class="hamburger" aria-hidden="true">
+                    <span class="hamburger__line"></span>
+                    <span class="hamburger__line"></span>
+                    <span class="hamburger__line"></span>
+                </span>
             </button>
         </div>
     </nav>
@@ -515,21 +519,16 @@
                 <div class="contact__map-container">
                     <iframe
                         class="contact__map-iframe"
-                        data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1252.3!2d17.0383!3d51.11535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fc2760c33218f%3A0xf64d5baa498dff4f!2sAwangarda%2071!5e0!3m2!1spl!2spl!4v1703001234567"
+                        data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.6422655165743!2d17.035834376887833!3d51.11558997170925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fc2760e82e5f5%3A0x5c2e28e8c3d0e9c5!2sAwangarda%2071!5e0!3m2!1spl!2spl!4v1703001234567!5m2!1spl!2spl"
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
                         title="Lokalizacja Klubu Sportowego Awangarda 71 na mapie Google"
-                        aria-label="Mapa Google pokazująca lokalizację Klubu Sportowego Awangarda 71 we Wrocławiu">
+                        aria-label="Mapa Google pokazująca lokalizację Klubu Sportowego Awangarda 71 we Wrocławiu"
+                        allowfullscreen="">
                     </iframe>
 
                     <!-- Dark Vignette Overlay -->
                     <div class="contact__map-overlay" aria-hidden="true"></div>
-
-                    <!-- Fixed Pointer (Center) -->
-                    <div class="map-pointer" aria-hidden="true">
-                        <i data-lucide="map-pin" class="map-pointer__icon"></i>
-                        <div class="map-pointer__ripple"></div>
-                    </div>
 
                     <!-- Navigation Button (Round HUD Style) -->
                     <a href="https://maps.app.goo.gl/mAgjtGAqKttSf7v19"
