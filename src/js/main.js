@@ -23,22 +23,90 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Preloader - hides after page load
+ * Preloader - Fight Mode
+ * Aggressive boxing-themed preloader with word flash sequence
  */
 function initPreloader() {
-  window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-      // Minimum display time for visual effect
-      setTimeout(() => {
-        preloader.classList.add('hidden');
-        // Remove from DOM after transition
-        setTimeout(() => {
-          preloader.remove();
-        }, 500);
-      }, 800);
+  const preloader = document.getElementById('preloader');
+  const wordCycler = document.getElementById('preloaderWords');
+  const percentDisplay = document.getElementById('preloaderPercent');
+  const progressFill = document.getElementById('preloaderFill');
+  const loaderLayout = document.getElementById('preloaderLoader');
+
+  if (!preloader || !wordCycler) return;
+
+  // Fighting words sequence
+  const words = ['SIŁA', 'WALKA', 'FORMA', 'PASJA', 'MISTRZ'];
+
+  let progress = 0;
+  let wordIndex = 0;
+
+  const showWord = (text, isFinal = false) => {
+    wordCycler.className = 'preloader__words';
+    void wordCycler.offsetWidth; // Force reflow
+
+    if (isFinal) {
+      wordCycler.innerHTML = 'OSKAR <span>GAJCOWSKI</span>';
+      wordCycler.classList.add('final-name');
+      wordCycler.classList.add('knockout');
+    } else {
+      wordCycler.innerText = text;
+      wordCycler.classList.add('punch-in');
     }
-  });
+  };
+
+  // Start with first word
+  showWord(words[0]);
+
+  const interval = setInterval(() => {
+    let increment = Math.floor(Math.random() * 3) + 1;
+    progress += increment;
+    if (progress > 100) progress = 100;
+
+    // Update percent with leading zero
+    if (percentDisplay) {
+      percentDisplay.innerText = `${progress < 10 ? '0' : ''}${progress}%`;
+    }
+    if (progressFill) {
+      progressFill.style.width = `${progress}%`;
+    }
+
+    // Calculate segment for word change
+    const segmentSize = 100 / words.length;
+    const currentSegment = Math.floor(progress / segmentSize);
+
+    if (currentSegment > wordIndex && currentSegment < words.length) {
+      wordCycler.classList.remove('punch-in');
+      wordCycler.classList.add('blur-out');
+      setTimeout(() => {
+        wordIndex = currentSegment;
+        showWord(words[wordIndex]);
+      }, 150);
+    }
+
+    if (progress >= 100) {
+      clearInterval(interval);
+
+      setTimeout(() => {
+        // Hide loader layout
+        if (loaderLayout) {
+          loaderLayout.style.opacity = '0';
+        }
+
+        // Final knockout with name
+        showWord('', true);
+
+        // Hide preloader at the end of knockout animation
+        setTimeout(() => {
+          preloader.classList.add('hidden');
+          // Remove from DOM
+          setTimeout(() => {
+            preloader.remove();
+          }, 100);
+        }, 1400);
+      }, 200);
+    }
+  }, 40);
 }
 
 /**
