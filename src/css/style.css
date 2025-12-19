@@ -2051,16 +2051,19 @@ img {
     top: var(--nav-height);
     left: 0;
     width: 100%;
+    /* Use dvh for dynamic viewport (accounts for mobile browser URL bar) with vh fallback */
     height: calc(100vh - var(--nav-height));
+    height: calc(100dvh - var(--nav-height));
     background: rgba(5, 5, 5, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     padding: var(--spacing-lg);
     text-align: center;
-    gap: 15px;
-    justify-content: flex-start;
-    padding-top: var(--spacing-xl);
+    gap: 20px;
+    justify-content: center;
     z-index: 999;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .nav__links.active {
@@ -2077,14 +2080,15 @@ img {
   /* Rezerwacja button in mobile menu - same style as .btn but compact */
   .nav__links .nav__cta--btn {
     margin-top: var(--spacing-lg);
-    padding: 8px 24px;
-    font-size: 0.95rem;
+    padding: 10px 28px;
+    font-size: 1rem;
     background-color: var(--color-accent-red);
     color: var(--color-white) !important;
     border: 2px solid var(--color-accent-red);
-    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
     width: auto;
     align-self: center;
+    flex-shrink: 0;
   }
 
   .nav__links .nav__cta--btn:hover {
@@ -2105,8 +2109,8 @@ img {
     display: flex;
     gap: var(--spacing-md);
     justify-content: center;
-    margin-top: var(--spacing-xl);
-    padding-bottom: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+    flex-shrink: 0;
   }
 
   .nav__social-link {
@@ -2149,7 +2153,7 @@ img {
 
   /* Brighten video on mobile - balanced */
   .hero__video {
-    filter: brightness(0.5) contrast(1.1);
+    filter: brightness(0.45) contrast(1.1);
   }
 
   .hero__overlay {
@@ -2340,6 +2344,64 @@ img {
 
   .contact__title {
     font-size: 2rem;
+  }
+
+  /* Slightly compact mobile menu for small screens */
+  .nav__links {
+    gap: 15px;
+  }
+
+  .nav__links a {
+    font-size: 1.2rem;
+  }
+
+  .nav__links .nav__cta--btn {
+    margin-top: var(--spacing-md);
+    padding: 8px 24px;
+    font-size: 0.95rem;
+  }
+
+  .nav__social {
+    margin-top: var(--spacing-md);
+  }
+
+  .nav__social-link {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+/* Landscape mode on mobile - compact menu */
+@media (max-height: 500px) and (max-width: 768px) {
+  .nav__links {
+    gap: 10px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    justify-content: center;
+  }
+
+  .nav__links a {
+    font-size: 1rem;
+    padding: 4px 0;
+  }
+
+  .nav__links .nav__cta--btn {
+    margin-top: var(--spacing-sm);
+    padding: 6px 20px;
+    font-size: 0.9rem;
+  }
+
+  .nav__social {
+    margin-top: var(--spacing-sm);
+  }
+
+  .nav__social-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav__social-link i {
+    width: 18px;
+    height: 18px;
   }
 }
 
