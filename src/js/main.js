@@ -36,6 +36,9 @@ function initPreloader() {
 
   if (!preloader || !wordCycler) return;
 
+  // Lock scroll during preloader
+  document.body.classList.add('preloader-active');
+
   // Fighting words sequence
   const words = ['SIŁA', 'WALKA', 'FORMA', 'PASJA', 'MISTRZ'];
 
@@ -100,6 +103,7 @@ function initPreloader() {
         // Hide preloader at the end of knockout animation
         setTimeout(() => {
           preloader.classList.add('hidden');
+          document.body.classList.remove('preloader-active');
           // Remove from DOM
           setTimeout(() => {
             preloader.remove();
@@ -182,24 +186,12 @@ function initMobileMenu() {
 
     // Toggle body scroll lock
     document.body.classList.toggle('menu-open', !isExpanded);
-
-    // Toggle icon
-    const icon = menuBtn.querySelector('i');
-    if (icon) {
-      icon.setAttribute('data-lucide', isExpanded ? 'menu' : 'x');
-      lucide.createIcons();
-    }
   };
 
   const closeMenu = () => {
     navLinks.classList.remove('active');
     menuBtn.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
-    const icon = menuBtn.querySelector('i');
-    if (icon) {
-      icon.setAttribute('data-lucide', 'menu');
-      lucide.createIcons();
-    }
   };
 
   menuBtn.addEventListener('click', () => toggleMenu());
