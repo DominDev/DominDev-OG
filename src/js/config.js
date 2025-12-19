@@ -16,11 +16,12 @@ const CONFIG = {
   FACEBOOK: 'https://www.facebook.com/profile.php?id=100086608413722',
 
   // Location
-  ADDRESS: 'Klub Sportowy Awangarda 71, ul. Ołbińska 19b, 50-233 Wrocław',
+  ADDRESS: 'Klub Sportowy Awangarda 71, ul. Ołbińska 17/budynek B, 50-237 Wrocław',
   GYM_NAME: 'Awangarda 71 Gym',
 
-  // Google Maps
-  MAPS_EMBED: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.656779354728!2d17.03755331575567!3d51.11475797957262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fc2765b44e4a1%3A0x9f4f2c7d8e4a7b2c!2sAwangarda%2071!5e0!3m2!1spl!2spl!4v1703001234567!5m2!1spl!2spl',
+  // Google Maps (centered on Awangarda 71, interaction disabled via CSS)
+  MAPS_EMBED: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1252.3!2d17.0383!3d51.11535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fc2760c33218f%3A0xf64d5baa498dff4f!2sAwangarda%2071!5e0!3m2!1spl!2spl!4v1703001234567',
+  MAPS_NAV: 'https://maps.app.goo.gl/mAgjtGAqKttSf7v19',
 
   // Coordinates for schema.org
   LATITUDE: '51.114757',

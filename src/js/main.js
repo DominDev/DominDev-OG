@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initScrollReveal();
   initLazyLoad();
+  initLazyMapLoad();
   initAnimatedCounters();
   initLightbox();
   initStaggeredReveals();
@@ -295,6 +296,34 @@ function initScrollReveal() {
   }, observerOptions);
 
   revealElements.forEach(el => observer.observe(el));
+}
+
+/**
+ * Lazy Loading for Map iframe
+ * Loads the map only when user scrolls near the contact section
+ */
+function initLazyMapLoad() {
+  const mapIframe = document.querySelector('.contact__map-iframe[data-src]');
+  if (!mapIframe) return;
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '200px 0px',
+    threshold: 0
+  };
+
+  const mapObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const iframe = entry.target;
+        iframe.src = iframe.dataset.src;
+        iframe.removeAttribute('data-src');
+        mapObserver.unobserve(iframe);
+      }
+    });
+  }, observerOptions);
+
+  mapObserver.observe(mapIframe);
 }
 
 /**
