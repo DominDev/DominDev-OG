@@ -594,12 +594,8 @@ function initStaggeredReveals() {
   const stats = document.querySelectorAll(".stats__item");
   stats.forEach((el, i) => el.setAttribute("data-delay", i + 1));
 
-  // About achievements
-  const achievements = document.querySelectorAll(".about__achievements li");
-  achievements.forEach((el, i) => {
-    el.classList.add("reveal");
-    el.setAttribute("data-delay", i + 1);
-  });
+  // About achievements - removed reveal animation to keep them always visible
+  // The parent .about__content already has reveal animation
 }
 
 /**

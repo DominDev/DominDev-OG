@@ -968,6 +968,7 @@ img {
 .about__achievements {
   list-style: none;
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .about__achievements li {
@@ -976,6 +977,7 @@ img {
   margin-bottom: 15px;
   font-family: var(--font-heading);
   font-size: 1.1rem;
+  color: var(--color-white);
 }
 
 .about__achievements i {
@@ -1979,6 +1981,11 @@ img {
 
   .about__grid--reversed .about__image {
     order: unset;
+  }
+
+  .about__achievements {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .offer__grid {
