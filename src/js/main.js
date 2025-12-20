@@ -752,6 +752,9 @@ function initScrollToTop() {
       top: 0,
       behavior: "smooth",
     });
+
+    // Remove focus/hover state on touch devices
+    scrollBtn.blur();
   });
 
   // Keyboard support
