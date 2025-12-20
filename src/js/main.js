@@ -799,7 +799,7 @@ function initCustomCursor() {
 
   // Smooth cursor animation
   function animateCursor() {
-    const speed = 0.15;
+    const speed = 0.5;
 
     cursorX += (mouseX - cursorX) * speed;
     cursorY += (mouseY - cursorY) * speed;
