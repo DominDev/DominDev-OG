@@ -659,13 +659,13 @@
                 <!-- Name Field -->
                 <div class="wa-modal__field">
                     <label for="waName" class="wa-modal__label">Imię <span class="wa-modal__optional">(opcjonalnie)</span></label>
-                    <input type="text" id="waName" name="name" class="wa-modal__input" placeholder="Twoje imię">
+                    <input type="text" id="waName" name="name" class="wa-modal__input" placeholder="Twoje imię" autocomplete="given-name">
                 </div>
 
                 <!-- Age Field -->
                 <div class="wa-modal__field">
-                    <label class="wa-modal__label">Wiek</label>
-                    <div class="wa-modal__chips" data-field="age">
+                    <span id="waAgeLabel" class="wa-modal__label">Wiek</span>
+                    <div class="wa-modal__chips" data-field="age" role="group" aria-labelledby="waAgeLabel">
                         <button type="button" class="wa-modal__chip" data-value="16-20">16-20</button>
                         <button type="button" class="wa-modal__chip" data-value="21-30">21-30</button>
                         <button type="button" class="wa-modal__chip" data-value="31-40">31-40</button>
@@ -677,8 +677,8 @@
 
                 <!-- Gender Field -->
                 <div class="wa-modal__field">
-                    <label class="wa-modal__label">Płeć</label>
-                    <div class="wa-modal__chips" data-field="gender">
+                    <span id="waGenderLabel" class="wa-modal__label">Płeć</span>
+                    <div class="wa-modal__chips" data-field="gender" role="group" aria-labelledby="waGenderLabel">
                         <button type="button" class="wa-modal__chip" data-value="mężczyzną">Mężczyzna</button>
                         <button type="button" class="wa-modal__chip" data-value="kobietą">Kobieta</button>
                         <button type="button" class="wa-modal__chip wa-modal__chip--skip" data-value="skip">Wolę nie podawać</button>
@@ -687,8 +687,8 @@
 
                 <!-- Level Field -->
                 <div class="wa-modal__field">
-                    <label class="wa-modal__label">Poziom zaawansowania</label>
-                    <div class="wa-modal__chips" data-field="level">
+                    <span id="waLevelLabel" class="wa-modal__label">Poziom zaawansowania</span>
+                    <div class="wa-modal__chips" data-field="level" role="group" aria-labelledby="waLevelLabel">
                         <button type="button" class="wa-modal__chip" data-value="początkującym">Początkujący</button>
                         <button type="button" class="wa-modal__chip" data-value="średniozaawansowanym">Średniozaawansowany</button>
                         <button type="button" class="wa-modal__chip" data-value="zaawansowanym">Zaawansowany</button>
@@ -698,8 +698,8 @@
 
                 <!-- Goal Field -->
                 <div class="wa-modal__field">
-                    <label class="wa-modal__label">Cel treningowy</label>
-                    <div class="wa-modal__chips" data-field="goal">
+                    <span id="waGoalLabel" class="wa-modal__label">Cel treningowy</span>
+                    <div class="wa-modal__chips" data-field="goal" role="group" aria-labelledby="waGoalLabel">
                         <button type="button" class="wa-modal__chip" data-value="poprawie formy">Poprawa formy</button>
                         <button type="button" class="wa-modal__chip" data-value="nauce techniki">Nauka techniki</button>
                         <button type="button" class="wa-modal__chip" data-value="przygotowaniu do walki">Przygotowanie do walki</button>
