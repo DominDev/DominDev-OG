@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollToTop();
   initScrollSpy();
   initCustomCursor();
+  initWhatsAppModal();
 });
 
 /**
@@ -858,4 +859,204 @@ function initCustomCursor() {
   document.addEventListener("mouseenter", () => {
     cursor.style.opacity = "1";
   });
+}
+
+/**
+ * WhatsApp Pre-Qualification Modal
+ * Collects user info before redirecting to WhatsApp with personalized message
+ */
+function initWhatsAppModal() {
+  const modal = document.getElementById("waModal");
+  const form = document.getElementById("waModalForm");
+  const skipBtn = document.getElementById("waModalSkip");
+  const closeBtn = modal?.querySelector(".wa-modal__close");
+  const backdrop = modal?.querySelector(".wa-modal__backdrop");
+  const triggers = document.querySelectorAll("[data-wa-modal]");
+
+  if (!modal || !form || triggers.length === 0) return;
+
+  // Form state
+  const formData = {
+    name: "",
+    age: null,
+    gender: null,
+    level: null,
+    goal: null,
+  };
+
+  // Phone number from config
+  const phoneNumber = typeof CONFIG !== "undefined" ? CONFIG.PHONE_LINK : "48784036721";
+
+  /**
+   * Open modal
+   */
+  const openModal = () => {
+    modal.classList.add("active");
+    document.body.classList.add("wa-modal-open");
+
+    // Reinitialize Lucide icons for modal
+    if (typeof lucide !== "undefined") {
+      lucide.createIcons();
+    }
+
+    // Focus first input
+    setTimeout(() => {
+      const nameInput = document.getElementById("waName");
+      if (nameInput) nameInput.focus();
+    }, 300);
+  };
+
+  /**
+   * Close modal and reset form
+   */
+  const closeModal = () => {
+    modal.classList.remove("active");
+    document.body.classList.remove("wa-modal-open");
+    resetForm();
+  };
+
+  /**
+   * Reset form to initial state
+   */
+  const resetForm = () => {
+    form.reset();
+    formData.name = "";
+    formData.age = null;
+    formData.gender = null;
+    formData.level = null;
+    formData.goal = null;
+
+    // Remove all selected states from chips
+    modal.querySelectorAll(".wa-modal__chip.selected").forEach((chip) => {
+      chip.classList.remove("selected");
+    });
+  };
+
+  /**
+   * Build WhatsApp message from form data
+   */
+  const buildMessage = () => {
+    const parts = [];
+
+    // Greeting with optional name
+    if (formData.name && formData.name.trim()) {
+      parts.push(`Cześć! Mam na imię ${formData.name.trim()}.`);
+    } else {
+      parts.push("Cześć!");
+    }
+
+    // Age and gender in one sentence if both provided
+    const hasAge = formData.age && formData.age !== "skip";
+    const hasGender = formData.gender && formData.gender !== "skip";
+
+    if (hasAge && hasGender) {
+      parts.push(`Mam ${formData.age} lat, jestem ${formData.gender}.`);
+    } else if (hasAge) {
+      parts.push(`Mam ${formData.age} lat.`);
+    } else if (hasGender) {
+      parts.push(`Jestem ${formData.gender}.`);
+    }
+
+    // Level and goal
+    const hasLevel = formData.level && formData.level !== "skip";
+    const hasGoal = formData.goal && formData.goal !== "skip";
+
+    if (hasLevel && hasGoal) {
+      parts.push(`Jestem na poziomie ${formData.level} i zależy mi na ${formData.goal}.`);
+    } else if (hasLevel) {
+      parts.push(`Jestem na poziomie ${formData.level}.`);
+    } else if (hasGoal) {
+      parts.push(`Zależy mi na ${formData.goal}.`);
+    }
+
+    // Call to action
+    parts.push("Chciałbym umówić się na darmowy trening wstępny!");
+
+    return parts.join(" ");
+  };
+
+  /**
+   * Redirect to WhatsApp with message
+   */
+  const redirectToWhatsApp = (message) => {
+    const encodedMessage = encodeURIComponent(message);
+    const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+    closeModal();
+  };
+
+  /**
+   * Handle chip selection (single select per group)
+   */
+  const handleChipClick = (chip) => {
+    const chipsContainer = chip.closest(".wa-modal__chips");
+    const field = chipsContainer.dataset.field;
+    const value = chip.dataset.value;
+
+    // Deselect all chips in this group
+    chipsContainer.querySelectorAll(".wa-modal__chip").forEach((c) => {
+      c.classList.remove("selected");
+    });
+
+    // Select clicked chip
+    chip.classList.add("selected");
+
+    // Update form data
+    formData[field] = value;
+  };
+
+  // Event Listeners
+
+  // Trigger buttons open modal
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  // Close button
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closeModal);
+  }
+
+  // Backdrop click closes modal
+  if (backdrop) {
+    backdrop.addEventListener("click", closeModal);
+  }
+
+  // Escape key closes modal
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("active")) {
+      closeModal();
+    }
+  });
+
+  // Chip selection
+  modal.querySelectorAll(".wa-modal__chip").forEach((chip) => {
+    chip.addEventListener("click", () => handleChipClick(chip));
+  });
+
+  // Name input
+  const nameInput = document.getElementById("waName");
+  if (nameInput) {
+    nameInput.addEventListener("input", (e) => {
+      formData.name = e.target.value;
+    });
+  }
+
+  // Form submit
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const message = buildMessage();
+    redirectToWhatsApp(message);
+  });
+
+  // Skip button - redirect with default message
+  if (skipBtn) {
+    skipBtn.addEventListener("click", () => {
+      const defaultMessage = "Cześć! Chciałbym umówić się na darmowy trening wstępny.";
+      redirectToWhatsApp(defaultMessage);
+    });
+  }
 }

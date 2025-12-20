@@ -741,6 +741,16 @@ img {
   align-self: flex-end;
 }
 
+/* Hover effect - lines turn red */
+.nav__menu-btn:hover .hamburger__line {
+  background-color: var(--color-accent-red);
+}
+
+.nav__menu-btn:hover .hamburger__line--punch {
+  background-color: var(--color-accent-red);
+  box-shadow: 0 0 12px rgba(210, 43, 43, 0.8);
+}
+
 /* Transform to X when menu is open */
 .nav__menu-btn[aria-expanded="true"] .hamburger__line:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
@@ -753,6 +763,11 @@ img {
 
 .nav__menu-btn[aria-expanded="true"] .hamburger__line:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Hover when menu is open (X state) */
+.nav__menu-btn[aria-expanded="true"]:hover .hamburger__line {
+  background-color: var(--color-accent-red);
 }
 
 /* Mobile Menu Social Icons - hidden on desktop */
@@ -2506,4 +2521,427 @@ html {
 /* Remove outline for mouse users */
 :focus:not(:focus-visible) {
   outline: none;
+}
+
+/* ==========================================================================
+   17. WhatsApp Pre-Qualification Modal
+   ========================================================================== */
+
+.wa-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.wa-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.wa-modal__backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.wa-modal__container {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #0a0a0a;
+  border: 1px solid #222;
+  border-radius: 4px;
+  padding: 40px;
+  margin: 20px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6), 0 0 40px rgba(210, 43, 43, 0.1);
+  transform: scale(0.95) translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.wa-modal.active .wa-modal__container {
+  transform: scale(1) translateY(0);
+}
+
+/* Close Button - Hamburger X Style */
+.wa-modal__close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.wa-modal__close-x {
+  position: relative;
+  width: 24px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wa-modal__close-x span {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-white);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.wa-modal__close-x span:first-child {
+  transform: rotate(45deg);
+}
+
+.wa-modal__close-x span:last-child {
+  transform: rotate(-45deg);
+}
+
+/* Middle line - red accent like hamburger */
+.wa-modal__close-x span:nth-child(2) {
+  width: 60%;
+  background-color: var(--color-accent-red);
+  box-shadow: 0 0 8px rgba(210, 43, 43, 0.6);
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.wa-modal__close:hover .wa-modal__close-x span:first-child,
+.wa-modal__close:hover .wa-modal__close-x span:last-child {
+  background-color: var(--color-accent-red);
+}
+
+.wa-modal__close:focus-visible {
+  outline: 2px solid var(--color-accent-gold);
+  outline-offset: 2px;
+}
+
+/* Header */
+.wa-modal__header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.wa-modal__title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-white);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.wa-modal__subtitle {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* Form Fields */
+.wa-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.wa-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wa-modal__label {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.wa-modal__optional {
+  color: var(--color-text-dark);
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Text Input */
+.wa-modal__input {
+  width: 100%;
+  padding: 14px 16px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.wa-modal__input::placeholder {
+  color: #666;
+}
+
+.wa-modal__input:focus {
+  outline: none;
+  border-color: var(--color-accent-gold);
+  box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.2);
+}
+
+/* Chips Container */
+.wa-modal__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Chip Button */
+.wa-modal__chip {
+  padding: 10px 16px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.wa-modal__chip:hover {
+  border-color: #555;
+  background: #1a1a1a;
+}
+
+/* Selected chip - Gold accent */
+.wa-modal__chip.selected {
+  background: rgba(197, 160, 89, 0.15);
+  border-color: var(--color-accent-gold);
+  color: var(--color-white);
+  box-shadow: 0 0 10px rgba(197, 160, 89, 0.25);
+}
+
+/* Skip chip - subtle style */
+.wa-modal__chip--skip {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+/* Skip chip selected - Red accent to stand out */
+.wa-modal__chip--skip.selected {
+  background: rgba(210, 43, 43, 0.15);
+  border-color: var(--color-accent-red);
+  color: var(--color-text);
+  box-shadow: 0 0 10px rgba(210, 43, 43, 0.2);
+}
+
+/* Actions */
+.wa-modal__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.wa-modal__submit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.1rem;
+}
+
+.wa-modal__submit i {
+  width: 20px;
+  height: 20px;
+}
+
+.wa-modal__skip {
+  background: none;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: var(--color-text-muted);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding: 12px 30px;
+  transition: all 0.3s ease;
+}
+
+.wa-modal__skip:hover {
+  color: var(--color-accent-gold);
+  border-color: var(--color-accent-gold);
+  background: rgba(197, 160, 89, 0.1);
+}
+
+/* Scrollbar for modal content */
+.wa-modal__container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.wa-modal__container::-webkit-scrollbar-track {
+  background: #111;
+}
+
+.wa-modal__container::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+.wa-modal__container::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-red);
+}
+
+/* Body scroll lock when modal is open */
+body.wa-modal-open {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   17b. WhatsApp Modal - Responsive
+   ========================================================================== */
+
+/* Mobile: Full-screen modal with dvh for URL bar */
+@media (max-width: 768px) {
+  .wa-modal__container {
+    max-width: 100%;
+    max-height: 100%;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height - accounts for mobile URL bar */
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    padding: 60px 20px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wa-modal__close {
+    top: 12px;
+    right: 8px;
+  }
+
+  .wa-modal__header {
+    margin-bottom: 24px;
+    flex-shrink: 0;
+  }
+
+  .wa-modal__title {
+    font-size: 1.6rem;
+  }
+
+  .wa-modal__form {
+    flex: 1;
+    overflow-y: auto;
+    gap: 20px;
+    min-height: 0; /* Important for flex overflow */
+  }
+
+  .wa-modal__chips {
+    gap: 6px;
+  }
+
+  .wa-modal__chip {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+
+  .wa-modal__chip--skip {
+    width: 100%;
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  .wa-modal__actions {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #222;
+    flex-shrink: 0;
+  }
+
+  .wa-modal__skip {
+    font-size: 0.9rem;
+    padding: 10px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wa-modal__container {
+    padding: 50px 15px 20px;
+  }
+
+  .wa-modal__title {
+    font-size: 1.4rem;
+  }
+
+  .wa-modal__subtitle {
+    font-size: 0.85rem;
+  }
+
+  .wa-modal__label {
+    font-size: 0.85rem;
+  }
+
+  .wa-modal__input {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+
+  .wa-modal__chip {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  .wa-modal__submit {
+    font-size: 1rem;
+    padding: 14px 30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .wa-modal__container {
+    padding: 45px 12px 15px;
+  }
+
+  .wa-modal__header {
+    margin-bottom: 20px;
+  }
+
+  .wa-modal__title {
+    font-size: 1.3rem;
+  }
+
+  .wa-modal__form {
+    gap: 18px;
+  }
 }

@@ -143,12 +143,11 @@
                 <a href="#galeria" role="menuitem">Galeria</a>
                 <a href="#faq" role="menuitem">FAQ</a>
                 <a href="#kontakt" role="menuitem">Kontakt</a>
-                <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20darmowy%20trening%20wst%C4%99pny."
-                   target="_blank"
-                   rel="noopener noreferrer"
+                <a href="#"
                    class="nav__cta nav__cta--btn"
                    role="menuitem"
-                   aria-label="Rezerwacja przez WhatsApp (otwiera nowe okno)">
+                   aria-label="Rezerwacja przez WhatsApp"
+                   data-wa-modal>
                     Rezerwacja
                 </a>
                 <!-- Mobile Menu Social Icons -->
@@ -205,10 +204,9 @@
             </h1>
             <p class="hero__tagline">Moje wsparcie.</p>
             <p class="hero__subtitle">Profesjonalny boks we Wrocławiu. Indywidualne podejście. Mistrzowska forma.</p>
-            <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20darmowy%20trening%20wst%C4%99pny."
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="btn">Umów Darmowy Trening</a>
+            <a href="#"
+               class="btn"
+               data-wa-modal>Umów Darmowy Trening</a>
         </div>
     </header>
 
@@ -245,10 +243,9 @@
                     <p class="about__text">Boks to moja największa pasja, którą rozwijam od ponad 15 lat. Jestem zawodowym pięściarzem, dwukrotnym Mistrzem Polski i trenerem, który zna ten sport od podszewki.</p>
                     <p class="about__text">Moja filozofia jest prosta: niezależnie od tego, czy jesteś zawodowcem, czy osobą, która pierwszy raz zakłada rękawice – znajdziesz u mnie miejsce. Dostosowuję trening do Twojej motoryki, kondycji i celów. Nie trenuję grup – skupiam się w 100% na Tobie.</p>
 
-                    <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20darmowy%20trening%20wst%C4%99pny."
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="btn btn--outline">Umów Darmowy Trening</a>
+                    <a href="#"
+                       class="btn btn--outline"
+                       data-wa-modal>Umów Darmowy Trening</a>
                 </div>
                 <div class="about__image reveal">
                     <img src="assets/img/originals/og-002.png"
@@ -570,11 +567,10 @@
                         </div>
                     </address>
 
-                    <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20darmowy%20trening%20wst%C4%99pny."
+                    <a href="#"
                        class="btn btn--glow"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="Napisz na WhatsApp (otwiera nowe okno)">
+                       aria-label="Napisz na WhatsApp"
+                       data-wa-modal>
                         Umów Darmowy Trening
                     </a>
 
@@ -642,6 +638,88 @@
         </div>
     </footer>
 
+    <!-- WhatsApp Pre-Qualification Modal -->
+    <div class="wa-modal" id="waModal" role="dialog" aria-modal="true" aria-labelledby="waModalTitle">
+        <div class="wa-modal__backdrop"></div>
+        <div class="wa-modal__container">
+            <button class="wa-modal__close" aria-label="Zamknij formularz">
+                <span class="wa-modal__close-x" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+
+            <div class="wa-modal__header">
+                <h2 id="waModalTitle" class="wa-modal__title">Zanim napiszesz</h2>
+                <p class="wa-modal__subtitle">Pomóż mi lepiej przygotować się do rozmowy z Tobą</p>
+            </div>
+
+            <form class="wa-modal__form" id="waModalForm">
+                <!-- Name Field -->
+                <div class="wa-modal__field">
+                    <label for="waName" class="wa-modal__label">Imię <span class="wa-modal__optional">(opcjonalnie)</span></label>
+                    <input type="text" id="waName" name="name" class="wa-modal__input" placeholder="Twoje imię">
+                </div>
+
+                <!-- Age Field -->
+                <div class="wa-modal__field">
+                    <label class="wa-modal__label">Wiek</label>
+                    <div class="wa-modal__chips" data-field="age">
+                        <button type="button" class="wa-modal__chip" data-value="16-20">16-20</button>
+                        <button type="button" class="wa-modal__chip" data-value="21-30">21-30</button>
+                        <button type="button" class="wa-modal__chip" data-value="31-40">31-40</button>
+                        <button type="button" class="wa-modal__chip" data-value="41-50">41-50</button>
+                        <button type="button" class="wa-modal__chip" data-value="50+">50+</button>
+                        <button type="button" class="wa-modal__chip wa-modal__chip--skip" data-value="skip">Wolę nie podawać</button>
+                    </div>
+                </div>
+
+                <!-- Gender Field -->
+                <div class="wa-modal__field">
+                    <label class="wa-modal__label">Płeć</label>
+                    <div class="wa-modal__chips" data-field="gender">
+                        <button type="button" class="wa-modal__chip" data-value="mężczyzną">Mężczyzna</button>
+                        <button type="button" class="wa-modal__chip" data-value="kobietą">Kobieta</button>
+                        <button type="button" class="wa-modal__chip wa-modal__chip--skip" data-value="skip">Wolę nie podawać</button>
+                    </div>
+                </div>
+
+                <!-- Level Field -->
+                <div class="wa-modal__field">
+                    <label class="wa-modal__label">Poziom zaawansowania</label>
+                    <div class="wa-modal__chips" data-field="level">
+                        <button type="button" class="wa-modal__chip" data-value="początkującym">Początkujący</button>
+                        <button type="button" class="wa-modal__chip" data-value="średniozaawansowanym">Średniozaawansowany</button>
+                        <button type="button" class="wa-modal__chip" data-value="zaawansowanym">Zaawansowany</button>
+                        <button type="button" class="wa-modal__chip wa-modal__chip--skip" data-value="skip">Wolę nie podawać</button>
+                    </div>
+                </div>
+
+                <!-- Goal Field -->
+                <div class="wa-modal__field">
+                    <label class="wa-modal__label">Cel treningowy</label>
+                    <div class="wa-modal__chips" data-field="goal">
+                        <button type="button" class="wa-modal__chip" data-value="poprawie formy">Poprawa formy</button>
+                        <button type="button" class="wa-modal__chip" data-value="nauce techniki">Nauka techniki</button>
+                        <button type="button" class="wa-modal__chip" data-value="przygotowaniu do walki">Przygotowanie do walki</button>
+                        <button type="button" class="wa-modal__chip" data-value="odchudzaniu">Odchudzanie</button>
+                        <button type="button" class="wa-modal__chip wa-modal__chip--skip" data-value="skip">Wolę nie podawać</button>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="wa-modal__actions">
+                    <button type="submit" class="btn wa-modal__submit">
+                        <i data-lucide="message-circle" aria-hidden="true"></i>
+                        Napisz na WhatsApp
+                    </button>
+                    <button type="button" class="wa-modal__skip" id="waModalSkip">Pomiń formularz</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Custom Cursor -->
     <div class="cursor" id="cursor" aria-hidden="true">
         <div class="cursor__dot"></div>
@@ -660,11 +738,10 @@
         </button>
 
         <!-- WhatsApp Button -->
-        <a href="https://wa.me/48784036721?text=Cze%C5%9B%C4%87!%20Chcia%C5%82bym%20um%C3%B3wi%C4%87%20si%C4%99%20na%20darmowy%20trening%20wst%C4%99pny."
+        <a href="#"
            class="hud-btn hud-btn--wa"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Napisz na WhatsApp">
+           aria-label="Napisz na WhatsApp"
+           data-wa-modal>
             <div class="hud-btn__dot" aria-hidden="true"></div>
             <i data-lucide="message-circle" aria-hidden="true"></i>
         </a>
