@@ -78,8 +78,10 @@ venv/
 # === Project Internal Docs (technical notes, not for production) ===
 _docs/
 
-# === Claude AI Configuration ===
+# === AI Assistant Configuration ===
 .claude/
+.gemini/
+**/CLAUDE.md
 
 # === Package locks (optional - uncomment if you want to track) ===
 # package-lock.json
