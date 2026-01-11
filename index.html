@@ -18,7 +18,7 @@
     <meta property="og:url" content="https://domindev.github.io/DominDev-OG/">
     <meta property="og:title" content="Oskar Gajcowski | Trener Personalny Boksu Wrocław">
     <meta property="og:description" content="Trenuj boks z 2-krotnym Mistrzem Polski. Profesjonalne treningi personalne we Wrocławiu.">
-    <meta property="og:image" content="https://domindev.github.io/DominDev-OG/assets/img/originals/og-002.png">
+    <meta property="og:image" content="https://domindev.github.io/DominDev-OG/assets/img/og-002-1200.jpg">
     <meta property="og:locale" content="pl_PL">
     <meta property="og:site_name" content="Oskar Gajcowski - Trener Boksu">
 
@@ -27,7 +27,7 @@
     <meta property="twitter:url" content="https://domindev.github.io/DominDev-OG/">
     <meta property="twitter:title" content="Oskar Gajcowski | Trener Personalny Boksu Wrocław">
     <meta property="twitter:description" content="Trenuj boks z 2-krotnym Mistrzem Polski. Profesjonalne treningi personalne we Wrocławiu.">
-    <meta property="twitter:image" content="https://domindev.github.io/DominDev-OG/assets/img/originals/og-002.png">
+    <meta property="twitter:image" content="https://domindev.github.io/DominDev-OG/assets/img/og-002-1200.jpg">
 
     <!-- Geo Tags (Local SEO) -->
     <meta name="geo.region" content="PL-DS">
@@ -46,12 +46,18 @@
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="assets/img/og-006-800.webp" as="image">
+    <link rel="preload" href="src/css/style.min.css" as="style">
+    <link rel="preload" href="src/js/main.min.js" as="script">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/style.min.css">
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
@@ -62,7 +68,7 @@
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "Oskar Gajcowski - Trener Personalny Boksu",
-        "image": "https://domindev.github.io/DominDev-OG/assets/img/originals/og-002.png",
+        "image": "https://domindev.github.io/DominDev-OG/assets/img/og-002-1200.jpg",
         "description": "Profesjonalne treningi bokserskie z 2-krotnym Mistrzem Polski we Wrocławiu",
         "@id": "https://domindev.github.io/DominDev-OG/",
         "url": "https://domindev.github.io/DominDev-OG/",
@@ -100,7 +106,7 @@
         "name": "Oskar Gajcowski",
         "jobTitle": "Trener Personalny Boksu",
         "description": "2-krotny Mistrz Polski w Boksie, zawodowy pięściarz i trener personalny",
-        "image": "https://domindev.github.io/DominDev-OG/assets/img/originals/og-002.png",
+        "image": "https://domindev.github.io/DominDev-OG/assets/img/og-002-1200.jpg",
         "sameAs": [
             "https://www.instagram.com/oskar.gajcowski",
             "https://www.facebook.com/profile.php?id=100086608413722"
@@ -188,7 +194,7 @@
                muted
                loop
                playsinline
-               poster="assets/img/originals/og-006.png"
+               poster="assets/img/og-006-800.webp"
                aria-hidden="true">
             <source src="assets/img/originals/og-mov-001.mp4" type="video/mp4">
         </video>
@@ -248,11 +254,25 @@
                        data-wa-modal>Umów Darmowy Trening</a>
                 </div>
                 <div class="about__image reveal">
-                    <img src="assets/img/originals/og-002.png"
-                         alt="Oskar Gajcowski z uniesioną ręką w geście zwycięstwa po wygranej walce bokserskiej"
-                         loading="lazy"
-                         width="600"
-                         height="800">
+                    <picture>
+                        <source type="image/avif"
+                                srcset="assets/img/og-002-400.avif 400w,
+                                        assets/img/og-002-800.avif 800w,
+                                        assets/img/og-002-1200.avif 1200w,
+                                        assets/img/og-002-1600.avif 1600w"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px">
+                        <source type="image/webp"
+                                srcset="assets/img/og-002-400.webp 400w,
+                                        assets/img/og-002-800.webp 800w,
+                                        assets/img/og-002-1200.webp 1200w,
+                                        assets/img/og-002-1600.webp 1600w"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px">
+                        <img src="assets/img/og-002-800.jpg"
+                             alt="Oskar Gajcowski z uniesioną ręką w geście zwycięstwa po wygranej walce bokserskiej"
+                             loading="lazy"
+                             width="600"
+                             height="400">
+                    </picture>
                 </div>
             </div>
         </section>
@@ -347,60 +367,152 @@
             <h2 id="gallery-title" class="visually-hidden">Galeria zdjęć</h2>
             <div class="gallery__grid">
                 <figure class="gallery__item">
-                    <img src="assets/img/originals/og-006.png"
-                         alt="Oskar Gajcowski podczas walki bokserskiej - dynamiczne uderzenie"
-                         loading="lazy"
-                         width="400"
-                         height="300">
+                    <picture>
+                        <source type="image/avif"
+                                srcset="assets/img/og-006-400.avif 400w,
+                                        assets/img/og-006-800.avif 800w,
+                                        assets/img/og-006-1200.avif 1200w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <source type="image/webp"
+                                srcset="assets/img/og-006-400.webp 400w,
+                                        assets/img/og-006-800.webp 800w,
+                                        assets/img/og-006-1200.webp 1200w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <img src="assets/img/og-006-800.jpg"
+                             alt="Oskar Gajcowski podczas walki bokserskiej - dynamiczne uderzenie"
+                             loading="lazy"
+                             width="400"
+                             height="413">
+                    </picture>
                 </figure>
                 <figure class="gallery__item">
-                    <img src="assets/img/originals/og-001.png"
-                         alt="Oskar Gajcowski w ringu bokserskim"
-                         loading="lazy"
-                         width="400"
-                         height="300">
+                    <picture>
+                        <source type="image/avif"
+                                srcset="assets/img/og-001-400.avif 400w,
+                                        assets/img/og-001-800.avif 800w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <source type="image/webp"
+                                srcset="assets/img/og-001-400.webp 400w,
+                                        assets/img/og-001-800.webp 800w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <img src="assets/img/og-001-800.jpg"
+                             alt="Oskar Gajcowski w ringu bokserskim"
+                             loading="lazy"
+                             width="400"
+                             height="266">
+                    </picture>
                 </figure>
                 <figure class="gallery__item">
-                    <img src="assets/img/originals/og-003.png"
-                         alt="Spektakularne wejście do ringu z efektami świetlnymi"
-                         loading="lazy"
-                         width="400"
-                         height="300">
+                    <picture>
+                        <source type="image/avif"
+                                srcset="assets/img/og-003-400.avif 400w,
+                                        assets/img/og-003-800.avif 800w,
+                                        assets/img/og-003-1200.avif 1200w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <source type="image/webp"
+                                srcset="assets/img/og-003-400.webp 400w,
+                                        assets/img/og-003-800.webp 800w,
+                                        assets/img/og-003-1200.webp 1200w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <img src="assets/img/og-003-800.jpg"
+                             alt="Spektakularne wejście do ringu z efektami świetlnymi"
+                             loading="lazy"
+                             width="400"
+                             height="267">
+                    </picture>
                 </figure>
                 <figure class="gallery__item">
-                    <img src="assets/img/originals/og-004.png"
-                         alt="Oskar Gajcowski w narożniku przed walką"
-                         loading="lazy"
-                         width="400"
-                         height="300">
+                    <picture>
+                        <source type="image/avif"
+                                srcset="assets/img/og-004-400.avif 400w,
+                                        assets/img/og-004-800.avif 800w,
+                                        assets/img/og-004-1200.avif 1200w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <source type="image/webp"
+                                srcset="assets/img/og-004-400.webp 400w,
+                                        assets/img/og-004-800.webp 800w,
+                                        assets/img/og-004-1200.webp 1200w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <img src="assets/img/og-004-800.jpg"
+                             alt="Oskar Gajcowski w narożniku przed walką"
+                             loading="lazy"
+                             width="400"
+                             height="400">
+                    </picture>
                 </figure>
                 <figure class="gallery__item">
-                    <img src="assets/img/originals/og-005.png"
-                         alt="Moment skupienia i koncentracji przed walką"
-                         loading="lazy"
-                         width="400"
-                         height="300">
+                    <picture>
+                        <source type="image/avif"
+                                srcset="assets/img/og-005-400.avif 400w,
+                                        assets/img/og-005-800.avif 800w,
+                                        assets/img/og-005-1200.avif 1200w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <source type="image/webp"
+                                srcset="assets/img/og-005-400.webp 400w,
+                                        assets/img/og-005-800.webp 800w,
+                                        assets/img/og-005-1200.webp 1200w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <img src="assets/img/og-005-800.jpg"
+                             alt="Moment skupienia i koncentracji przed walką"
+                             loading="lazy"
+                             width="400"
+                             height="600">
+                    </picture>
                 </figure>
                 <figure class="gallery__item">
-                    <img src="assets/img/originals/og-000.png"
-                         alt="Portret Oskara Gajcowskiego - trener boksu"
-                         loading="lazy"
-                         width="400"
-                         height="300">
+                    <picture>
+                        <source type="image/avif"
+                                srcset="assets/img/og-000-400.avif 400w,
+                                        assets/img/og-000-800.avif 800w,
+                                        assets/img/og-000-1200.avif 1200w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <source type="image/webp"
+                                srcset="assets/img/og-000-400.webp 400w,
+                                        assets/img/og-000-800.webp 800w,
+                                        assets/img/og-000-1200.webp 1200w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <img src="assets/img/og-000-800.jpg"
+                             alt="Portret Oskara Gajcowskiego - trener boksu"
+                             loading="lazy"
+                             width="400"
+                             height="400">
+                    </picture>
                 </figure>
                 <figure class="gallery__item">
-                    <img src="assets/img/originals/og-007.png"
-                         alt="Face to face - konfrontacja przed walką"
-                         loading="lazy"
-                         width="400"
-                         height="300">
+                    <picture>
+                        <source type="image/avif"
+                                srcset="assets/img/og-007-400.avif 400w,
+                                        assets/img/og-007-800.avif 800w,
+                                        assets/img/og-007-1200.avif 1200w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <source type="image/webp"
+                                srcset="assets/img/og-007-400.webp 400w,
+                                        assets/img/og-007-800.webp 800w,
+                                        assets/img/og-007-1200.webp 1200w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <img src="assets/img/og-007-800.jpg"
+                             alt="Face to face - konfrontacja przed walką"
+                             loading="lazy"
+                             width="400"
+                             height="210">
+                    </picture>
                 </figure>
                 <figure class="gallery__item">
-                    <img src="assets/img/originals/awangarda71.png"
-                         alt="Logo Klubu Sportowego Awangarda 71"
-                         loading="lazy"
-                         width="400"
-                         height="300">
+                    <picture>
+                        <source type="image/avif"
+                                srcset="assets/img/awangarda71-400.avif 400w,
+                                        assets/img/awangarda71-800.avif 800w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <source type="image/webp"
+                                srcset="assets/img/awangarda71-400.webp 400w,
+                                        assets/img/awangarda71-800.webp 800w"
+                                sizes="(max-width: 768px) 100vw, 400px">
+                        <img src="assets/img/awangarda71-800.jpg"
+                             alt="Logo Klubu Sportowego Awangarda 71"
+                             loading="lazy"
+                             width="400"
+                             height="400">
+                    </picture>
                 </figure>
             </div>
         </section>
@@ -748,8 +860,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="src/js/config.js"></script>
-    <script src="src/js/main.js"></script>
+    <script src="src/js/config.min.js"></script>
+    <script src="src/js/main.min.js"></script>
 
     <!-- Visually hidden class for screen readers -->
     <style>

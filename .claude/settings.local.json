@@ -1,4 +1,11 @@
 {
+  "env": {
+    "MAX_THINKING_TOKENS": "4096",
+    "BASH_DEFAULT_TIMEOUT_MS": "600000",
+    "BASH_MAX_TIMEOUT_MS": "900000",
+    "BASH_MAX_OUTPUT_LENGTH": "80000",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1"
+  },
   "permissions": {
     "allow": [
       "WebFetch",
@@ -26,7 +33,9 @@
       "Bash(git show:*)",
       "Bash(wc:*)",
       "Bash(dir /s \"d:\\\\ProgramData\\\\DominDev\\\\DominDev-OG\\\\assets\")",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(node:*)",
+      "Bash(npm install:*)"
     ],
     "ask": [
       "Read(./.env)",
@@ -47,12 +56,5 @@
       "Bash(git push:*)"
     ],
     "defaultMode": "acceptEdits"
-  },
-  "env": {
-    "MAX_THINKING_TOKENS": "4096",
-    "BASH_DEFAULT_TIMEOUT_MS": "600000",
-    "BASH_MAX_TIMEOUT_MS": "900000",
-    "BASH_MAX_OUTPUT_LENGTH": "80000",
-    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1"
   }
 }
