@@ -2946,3 +2946,231 @@ body.wa-modal-open {
     gap: 18px;
   }
 }
+
+/* ==========================================================================
+   16. Privacy Policy & Consent
+   ========================================================================== */
+
+/* Footer Link Button (styled like a link) */
+.footer__link-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  transition: var(--transition-base);
+  /* Fix for screenshot issue - ensuring inline display and vertical alignment */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.footer__link-btn:hover {
+  color: var(--color-accent-red);
+}
+
+.footer__link-btn:focus-visible {
+  outline: 1px solid var(--color-accent-gold);
+}
+
+/* Custom Checkbox */
+.wa-modal__consent {
+  margin-bottom: 25px;
+  padding: 0 2px;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: flex-start; /* Align to top for multiline text */
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.custom-checkbox__box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--color-text-dark);
+  border-radius: 3px; /* Slightly sharper corners */
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--transition-base);
+  margin-top: 3px; /* Align with first line of text */
+}
+
+.custom-checkbox__box i,
+.custom-checkbox__box svg {
+  width: 14px;
+  height: 14px;
+  color: var(--color-white); /* White checkmark for better contrast */
+  opacity: 0;
+  visibility: hidden; /* Ensure it's not visible by default */
+  transform: scale(0.5);
+  transition: var(--transition-fast);
+  stroke-width: 3px; /* Bolder checkmark */
+}
+
+/* Checked State */
+.custom-checkbox input:checked ~ .custom-checkbox__box {
+  background-color: var(--color-accent-red);
+  border-color: var(--color-accent-red);
+}
+
+.custom-checkbox input:checked ~ .custom-checkbox__box i,
+.custom-checkbox input:checked ~ .custom-checkbox__box svg {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+/* Focus State */
+.custom-checkbox input:focus-visible ~ .custom-checkbox__box {
+  outline: 2px solid var(--color-accent-gold);
+  outline-offset: 2px;
+}
+
+/* Error State (Validation) */
+.custom-checkbox.error .custom-checkbox__box {
+  border-color: var(--color-accent-red);
+  animation: shake 0.4s ease-in-out;
+  box-shadow: 0 0 10px rgba(210, 43, 43, 0.3);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.custom-checkbox__text {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  padding-top: 1px; /* Optical alignment */
+}
+
+.text-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-accent-gold);
+  text-decoration: underline;
+  text-underline-offset: 3px; /* Better underline spacing */
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 500;
+  transition: color 0.2s;
+  display: inline;
+}
+
+.text-link:hover {
+  color: var(--color-white);
+}
+
+/* Privacy Modal Specifics */
+.wa-modal--privacy {
+  z-index: 10001; /* Above WA Modal */
+}
+
+.wa-modal--privacy .wa-modal__container {
+  max-width: 800px;
+}
+
+.wa-modal__content-scroll {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 10px;
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* Scrollbar for content */
+.wa-modal__content-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.wa-modal__content-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.wa-modal__content-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-text-dark);
+  border-radius: 3px;
+}
+
+.wa-modal__content-scroll h3 {
+  color: var(--color-accent-red);
+  font-size: 1.2rem;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.wa-modal__content-scroll h3:first-child {
+  margin-top: 0;
+}
+
+.wa-modal__content-scroll ul {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.wa-modal__content-scroll li {
+  margin-bottom: 5px;
+}
+
+
+/* Fix for footer link button issues */
+.footer__link-btn {
+  background-color: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  color: #999;
+  font-family: inherit;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: inherit;
+  margin-top: -2px; /* Slight alignment fix */
+}
+
+.footer__link-btn:hover {
+  color: #D22B2B;
+}
+
+/* Fix for privacy link in checkbox */
+.custom-checkbox__text .text-link {
+  background: transparent !important;
+  color: #C5A059 !important;
+  font-weight: bold;
+  text-decoration: underline;
+  padding: 0 2px;
+  border: none !important;
+}
+
+.custom-checkbox__text .text-link:hover {
+  color: #fff !important;
+}
+

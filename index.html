@@ -47,7 +47,7 @@
         font-src 'self' https://fonts.gstatic.com;
         img-src 'self' data: https:;
         frame-src https://www.google.com;
-        connect-src 'self';
+        connect-src 'self' https://unpkg.com;
     ">
 
     <!-- Favicon -->
@@ -721,7 +721,6 @@
                         data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.17918848146!2d17.035887777206046!3d51.12360273866776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fe9c2ef08120f%3A0x39db8972a47e5d8a!2zT8WCYmnFhHNrYSAxNy9idWR5bmVrIEIsIDUwLTIzMyBXcm9jxYJhdw!5e0!3m2!1spl!2spl!4v1766189125955!5m2!1spl!2spl"
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
-                        sandbox="allow-scripts allow-same-origin"
                         title="Lokalizacja sali treningowej - ul. Ołbińska 17/budynek B, Wrocław"
                         aria-label="Mapa Google pokazująca lokalizację sali treningowej we Wrocławiu"
                         allowfullscreen="">
@@ -820,6 +819,7 @@
                     <a href="#galeria">Galeria</a>
                     <a href="#faq">FAQ</a>
                     <a href="#kontakt">Kontakt</a>
+                    <button type="button" class="footer__link-btn" data-privacy-trigger>Polityka Prywatności</button>
                 </div>
                 <div class="footer__social">
                     <a href="https://www.instagram.com/oskar.gajcowski"
@@ -864,7 +864,7 @@
                 <p class="wa-modal__subtitle">Pomóż mi lepiej przygotować się do rozmowy z Tobą</p>
             </div>
 
-            <form class="wa-modal__form" id="waModalForm">
+            <form class="wa-modal__form" id="waModalForm" novalidate>
                 <!-- Name Field -->
                 <div class="wa-modal__field">
                     <label for="waName" class="wa-modal__label">Imię <span class="wa-modal__optional">(opcjonalnie)</span></label>
@@ -918,6 +918,19 @@
                 </div>
 
                 <!-- Actions -->
+                <!-- Checkbox zgody -->
+                <div class="wa-modal__consent">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="waConsent" required>
+                        <span class="custom-checkbox__box">
+                            <i data-lucide="check" aria-hidden="true"></i>
+                        </span>
+                        <span class="custom-checkbox__text">
+                            Akceptuję <button type="button" class="text-link" data-privacy-trigger>Politykę Prywatności</button> i wyrażam zgodę na przetwarzanie danych w celu obsługi zgłoszenia.
+                        </span>
+                    </label>
+                </div>
+
                 <div class="wa-modal__actions">
                     <button type="submit" class="btn wa-modal__submit">
                         <i data-lucide="message-circle" aria-hidden="true"></i>
@@ -926,6 +939,28 @@
                     <button type="button" class="wa-modal__skip" id="waModalSkip">Pomiń formularz</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div class="wa-modal wa-modal--privacy" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+        <div class="wa-modal__backdrop"></div>
+        <div class="wa-modal__container">
+            <button class="wa-modal__close" aria-label="Zamknij politykę prywatności">
+                <span class="wa-modal__close-x" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+
+            <div class="wa-modal__header">
+                <h2 id="privacyTitle" class="wa-modal__title">Polityka Prywatności</h2>
+            </div>
+
+            <div class="wa-modal__content-scroll" id="privacyContent">
+                <!-- Content injected via JS -->
+            </div>
         </div>
     </div>
 
@@ -958,6 +993,7 @@
 
     <!-- Scripts -->
     <script src="src/js/config.min.js"></script>
+    <script src="src/js/privacy-content.min.js"></script>
     <script src="src/js/main.min.js"></script>
 
     <!-- Visually hidden class for screen readers -->

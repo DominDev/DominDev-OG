@@ -22,7 +22,65 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollSpy();
   initCustomCursor();
   initWhatsAppModal();
+  initPrivacyPolicy();
 });
+
+/**
+ * Privacy Policy Modal Logic
+ */
+function initPrivacyPolicy() {
+  const modal = document.getElementById("privacyModal");
+  const closeBtn = modal?.querySelector(".wa-modal__close");
+  const backdrop = modal?.querySelector(".wa-modal__backdrop");
+  const contentContainer = document.getElementById("privacyContent");
+  const triggers = document.querySelectorAll("[data-privacy-trigger]");
+
+  if (!modal || triggers.length === 0) return;
+
+  let contentLoaded = false;
+
+  const loadContent = () => {
+    if (contentLoaded || !contentContainer) return;
+    
+    if (typeof PRIVACY_POLICY_CONTENT !== "undefined") {
+      contentContainer.innerHTML = PRIVACY_POLICY_CONTENT;
+      contentLoaded = true;
+    } else {
+      contentContainer.innerHTML = "<p>Nie udało się załadować treści polityki prywatności. Proszę spróbować później.</p>";
+    }
+  };
+
+  const openModal = () => {
+    loadContent();
+    modal.classList.add("active");
+    // Ensure privacy modal is on top if opened from another modal
+    modal.style.zIndex = "10002"; 
+    document.body.classList.add("privacy-modal-open");
+  };
+
+  const closeModal = () => {
+    modal.classList.remove("active");
+    document.body.classList.remove("privacy-modal-open");
+    // Reset z-index after transition (timeout matches css transition)
+    setTimeout(() => { modal.style.zIndex = ""; }, 300);
+  };
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+  if (backdrop) backdrop.addEventListener("click", closeModal);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("active")) {
+      closeModal();
+    }
+  });
+}
 
 /**
  * Preloader - Fight Mode
@@ -835,7 +893,7 @@ function initCustomCursor() {
 
   // Interactive elements hover state
   const interactiveElements = document.querySelectorAll(
-    "a, button, .gallery__item, .faq__question, input, textarea, select"
+    "a, button, .gallery__item, .faq__question, input, textarea, select, .custom-checkbox, .text-link, .footer__link-btn"
   );
 
   interactiveElements.forEach((el) => {
@@ -896,6 +954,7 @@ function initWhatsAppModal() {
   const closeBtn = modal?.querySelector(".wa-modal__close");
   const backdrop = modal?.querySelector(".wa-modal__backdrop");
   const triggers = document.querySelectorAll("[data-wa-modal]");
+  const consentCheckbox = document.getElementById("waConsent");
 
   if (!modal || !form || triggers.length === 0) return;
 
@@ -949,6 +1008,11 @@ function initWhatsAppModal() {
     formData.gender = null;
     formData.level = null;
     formData.goal = null;
+
+    if (consentCheckbox) {
+      consentCheckbox.checked = false;
+      consentCheckbox.parentElement.classList.remove("error");
+    }
 
     // Remove all selected states from chips
     modal.querySelectorAll(".wa-modal__chip.selected").forEach((chip) => {
@@ -1007,6 +1071,20 @@ function initWhatsAppModal() {
     const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(url, "_blank", "noopener,noreferrer");
     closeModal();
+  };
+
+  /**
+   * Validate Consent
+   */
+  const validateConsent = () => {
+    if (consentCheckbox && !consentCheckbox.checked) {
+      const wrapper = consentCheckbox.parentElement;
+      wrapper.classList.remove("error");
+      void wrapper.offsetWidth; // Force reflow
+      wrapper.classList.add("error");
+      return false;
+    }
+    return true;
   };
 
   /**
@@ -1069,9 +1147,20 @@ function initWhatsAppModal() {
     });
   }
 
+  // Remove error on change
+  if (consentCheckbox) {
+    consentCheckbox.addEventListener("change", () => {
+      if (consentCheckbox.checked) {
+        consentCheckbox.parentElement.classList.remove("error");
+      }
+    });
+  }
+
   // Form submit
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    if (!validateConsent()) return;
+    
     const message = buildMessage();
     redirectToWhatsApp(message);
   });
@@ -1079,6 +1168,8 @@ function initWhatsAppModal() {
   // Skip button - redirect with default message
   if (skipBtn) {
     skipBtn.addEventListener("click", () => {
+      if (!validateConsent()) return;
+
       const defaultMessage = "Cześć! Chciałbym umówić się na darmowy trening wstępny.";
       redirectToWhatsApp(defaultMessage);
     });
