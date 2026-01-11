@@ -1,0 +1,19 @@
+{
+  "name": "domindev-og",
+  "version": "1.0.0",
+  "description": "Landing page for boxing personal trainer Oskar Gajcowski",
+  "private": true,
+  "scripts": {
+    "minify:css": "node _scripts/auto-minify-css.js",
+    "minify:css:watch": "node _scripts/auto-minify-css.js --watch",
+    "minify:js": "node _scripts/minify-js.js",
+    "optimize:images": "node _scripts/optimize-images.js",
+    "optimize:images:watch": "node _scripts/optimize-images.js --watch",
+    "build": "npm run optimize:images && npm run minify:css && npm run minify:js",
+    "dev": "npm run optimize:images:watch"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.0",
+    "terser": "^5.31.0"
+  }
+}

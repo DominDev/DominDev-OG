@@ -101,7 +101,11 @@ const CONFIG = {
   ],
 
   // Rozmiary dla responsive images (szerokości w pikselach)
-  sizes: [300, 600, 900],
+  // 400w  - Mobile 1x
+  // 800w  - Mobile 2x, Tablet 1x
+  // 1200w - Tablet 2x, Desktop 1x
+  // 1600w - Desktop 2x, Large screens
+  sizes: [400, 800, 1200, 1600],
 
   // Formaty wyjściowe (w kolejności od najnowszych do legacy)
   formats: [
@@ -412,15 +416,82 @@ async function main() {
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// ERROR HANDLING
+// WATCH MODE
 // ═══════════════════════════════════════════════════════════════════
 
-main().catch(error => {
-  console.error('\n❌ BŁĄD KRYTYCZNY:\n');
-  console.error(error);
-  console.error('\n💡 Sprawdź czy:');
-  console.error('   1. Zainstalowałeś sharp: npm install sharp --save-dev');
-  console.error('   2. Katalogi originals/ istnieją i zawierają obrazy');
-  console.error('   3. Masz uprawnienia do zapisu w katalogu assets/');
-  process.exit(1);
-});
+const WATCH_MODE = process.argv.includes('--watch');
+
+async function watchForChanges() {
+  console.log('═══════════════════════════════════════════════════════════════════');
+  console.log('👁️  WATCH MODE - Monitoring for new images...');
+  console.log('═══════════════════════════════════════════════════════════════════\n');
+
+  console.log('Watching directories:');
+  CONFIG.inputDirs.forEach(dir => console.log(`  - ${dir}`));
+  console.log('\nPress Ctrl+C to stop.\n');
+
+  // Initial optimization
+  await main();
+
+  // Watch each input directory
+  for (const inputDir of CONFIG.inputDirs) {
+    try {
+      await fs.access(inputDir);
+
+      const watcher = require('fs').watch(inputDir, async (eventType, filename) => {
+        if (!filename) return;
+        if (!/\.(jpg|jpeg|png|webp|tiff)$/i.test(filename)) return;
+
+        const fullPath = path.join(inputDir, filename);
+        const outputDir = path.dirname(inputDir);
+
+        // Small delay to ensure file is fully written
+        setTimeout(async () => {
+          try {
+            await fs.access(fullPath);
+            console.log(`\n📷 New image detected: ${filename}`);
+
+            const image = {
+              fullPath,
+              filename: path.parse(filename).name,
+              ext: path.parse(filename).ext,
+            };
+
+            await processImage(image, outputDir);
+            console.log('✓ Ready for next image...\n');
+          } catch (err) {
+            // File was deleted or moved
+          }
+        }, 500);
+      });
+
+      console.log(`✓ Watching: ${inputDir}`);
+    } catch {
+      console.log(`⚠️  Directory not found (will be created): ${inputDir}`);
+      await ensureDir(inputDir);
+    }
+  }
+
+  console.log('\n✓ Watching for new images...\n');
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// MAIN EXECUTION
+// ═══════════════════════════════════════════════════════════════════
+
+if (WATCH_MODE) {
+  watchForChanges().catch(error => {
+    console.error('❌ Watch mode error:', error.message);
+    process.exit(1);
+  });
+} else {
+  main().catch(error => {
+    console.error('\n❌ BŁĄD KRYTYCZNY:\n');
+    console.error(error);
+    console.error('\n💡 Sprawdź czy:');
+    console.error('   1. Zainstalowałeś sharp: npm install sharp --save-dev');
+    console.error('   2. Katalogi originals/ istnieją i zawierają obrazy');
+    console.error('   3. Masz uprawnienia do zapisu w katalogu assets/');
+    process.exit(1);
+  });
+}
