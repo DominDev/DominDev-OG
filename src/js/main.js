@@ -54,8 +54,10 @@ function initPrivacyPolicy() {
     loadContent();
     modal.classList.add("active");
     // Ensure privacy modal is on top if opened from another modal
-    modal.style.zIndex = "10002"; 
+    modal.style.zIndex = "10002";
     document.body.classList.add("privacy-modal-open");
+    // Mobile: auto-hide scrollbar
+    initContentScrollbar();
   };
 
   const closeModal = () => {
@@ -63,6 +65,22 @@ function initPrivacyPolicy() {
     document.body.classList.remove("privacy-modal-open");
     // Reset z-index after transition (timeout matches css transition)
     setTimeout(() => { modal.style.zIndex = ""; }, 300);
+  };
+
+  // Auto-hide scrollbar for mobile
+  let scrollTimeout = null;
+  const initContentScrollbar = () => {
+    const scrollElement = modal.querySelector(".wa-modal__content-scroll");
+    if (!scrollElement || window.innerWidth > 768) return;
+
+    scrollElement.addEventListener("scroll", () => {
+      scrollElement.classList.add("is-scrolling");
+
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        scrollElement.classList.remove("is-scrolling");
+      }, 1000);
+    }, { passive: true });
   };
 
   triggers.forEach(trigger => {
@@ -987,6 +1005,27 @@ function initWhatsAppModal() {
       const nameInput = document.getElementById("waName");
       if (nameInput) nameInput.focus();
     }, 300);
+
+    // Mobile: auto-hide scrollbar (show only while scrolling)
+    initFormScrollbar();
+  };
+
+  /**
+   * Auto-hide scrollbar for mobile form
+   */
+  let scrollTimeout = null;
+  const initFormScrollbar = () => {
+    const formElement = modal.querySelector(".wa-modal__form");
+    if (!formElement || window.innerWidth > 768) return;
+
+    formElement.addEventListener("scroll", () => {
+      formElement.classList.add("is-scrolling");
+
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        formElement.classList.remove("is-scrolling");
+      }, 1000);
+    }, { passive: true });
   };
 
   /**
