@@ -16,7 +16,8 @@ const path = require('path');
 
 const FILES_TO_MINIFY = [
   { input: 'src/js/main.js', output: 'src/js/main.min.js' },
-  { input: 'src/js/config.js', output: 'src/js/config.min.js' }
+  { input: 'src/js/config.js', output: 'src/js/config.min.js' },
+  { input: 'src/js/privacy-content.js', output: 'src/js/privacy-content.min.js' }
 ];
 
 const ROOT_DIR = path.join(__dirname, '..');

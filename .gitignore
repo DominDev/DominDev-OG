@@ -81,7 +81,10 @@ _docs/
 # === AI Assistant Configuration ===
 .claude/
 .gemini/
+.claude*/
+.gemini*/
 **/CLAUDE.md
+**/GEMINI.md
 
 # === Package locks (optional - uncomment if you want to track) ===
 # package-lock.json
