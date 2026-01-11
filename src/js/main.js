@@ -131,8 +131,12 @@ function initPreloader() {
  * Initialize Lucide Icons
  */
 function initIcons() {
-  if (typeof lucide !== "undefined") {
-    lucide.createIcons();
+  try {
+    if (typeof lucide !== "undefined") {
+      lucide.createIcons();
+    }
+  } catch (error) {
+    console.warn("Lucide icons failed to load:", error.message);
   }
 }
 
@@ -574,6 +578,23 @@ function initLightbox() {
         break;
       case "ArrowRight":
         showNext();
+        break;
+      case "Tab":
+        // Focus trap: cycle between close, prev, next buttons
+        e.preventDefault();
+        const focusableElements = [closeBtn, prevBtn, nextBtn];
+        const currentFocus = document.activeElement;
+        const currentIdx = focusableElements.indexOf(currentFocus);
+
+        if (e.shiftKey) {
+          // Shift+Tab: go backwards
+          const prevIdx = currentIdx <= 0 ? focusableElements.length - 1 : currentIdx - 1;
+          focusableElements[prevIdx].focus();
+        } else {
+          // Tab: go forwards
+          const nextIdx = currentIdx >= focusableElements.length - 1 ? 0 : currentIdx + 1;
+          focusableElements[nextIdx].focus();
+        }
         break;
     }
   });

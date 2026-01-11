@@ -397,7 +397,7 @@ body.preloader-active {
   --color-bg: #050505;
   --color-bg-surface: #121212;
   --color-text: #e0e0e0;
-  --color-text-muted: #999;
+  --color-text-muted: #a3a3a3; /* WCAG AA compliant (4.5:1 contrast) */
   --color-text-dark: #888;
   --color-accent-red: #D22B2B;
   --color-accent-red-dark: #a01b1b;

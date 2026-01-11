@@ -35,7 +35,9 @@
       "Bash(dir /s \"d:\\\\ProgramData\\\\DominDev\\\\DominDev-OG\\\\assets\")",
       "Bash(findstr:*)",
       "Bash(node:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(openssl dgst:*)",
+      "Bash(openssl base64:*)"
     ],
     "ask": [
       "Read(./.env)",

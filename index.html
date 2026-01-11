@@ -39,6 +39,17 @@
     <meta name="theme-color" content="#D22B2B">
     <meta name="msapplication-TileColor" content="#D22B2B">
 
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' https://unpkg.com 'unsafe-inline';
+        style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
+        font-src 'self' https://fonts.gstatic.com;
+        img-src 'self' data: https:;
+        frame-src https://www.google.com;
+        connect-src 'self';
+    ">
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-icon.png">
@@ -59,8 +70,11 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="src/css/style.min.css">
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <!-- Lucide Icons (pinned version with SRI) -->
+    <script src="https://unpkg.com/lucide@0.562.0/dist/umd/lucide.min.js"
+            defer
+            integrity="sha384-FmRlymRnpgjuKyAnwH4DftRjl+RqHOlfcw9k4xcpPyovclg/2RZRrvw7qe1koVCP"
+            crossorigin="anonymous"></script>
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -707,6 +721,7 @@
                         data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.17918848146!2d17.035887777206046!3d51.12360273866776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fe9c2ef08120f%3A0x39db8972a47e5d8a!2zT8WCYmnFhHNrYSAxNy9idWR5bmVrIEIsIDUwLTIzMyBXcm9jxYJhdw!5e0!3m2!1spl!2spl!4v1766189125955!5m2!1spl!2spl"
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
+                        sandbox="allow-scripts allow-same-origin"
                         title="Lokalizacja sali treningowej - ul. Ołbińska 17/budynek B, Wrocław"
                         aria-label="Mapa Google pokazująca lokalizację sali treningowej we Wrocławiu"
                         allowfullscreen="">
