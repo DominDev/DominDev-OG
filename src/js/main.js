@@ -1053,37 +1053,23 @@ function initCustomCursor() {
 
   animateCursor();
 
-  // Interactive elements hover state
-  const interactiveElements = document.querySelectorAll(
-    "a, button, .gallery__item, .faq__question, input, textarea, select, .custom-checkbox, .text-link, .footer__link-btn"
-  );
-
-  interactiveElements.forEach((el) => {
-    el.style.cursor = "none";
-
-    el.addEventListener("mouseenter", () => {
-      cursor.classList.add("cursor--hover");
-    });
-
-    el.addEventListener("mouseleave", () => {
-      cursor.classList.remove("cursor--hover");
-    });
-  });
-
-  // Text input hover state
-  const textElements = document.querySelectorAll(
-    'input[type="text"], input[type="email"], input[type="tel"], textarea'
-  );
-
-  textElements.forEach((el) => {
-    el.addEventListener("mouseenter", () => {
-      cursor.classList.remove("cursor--hover");
-      cursor.classList.add("cursor--text");
-    });
-
-    el.addEventListener("mouseleave", () => {
-      cursor.classList.remove("cursor--text");
-    });
+  // Event Delegation for Hover States (handles dynamic content)
+  document.addEventListener("mouseover", (e) => {
+    // Check if target is interactive or inside interactive element
+    const target = e.target.closest("a, button, .gallery__item, .faq__question, input, textarea, select, .custom-checkbox, .text-link, .footer__link-btn");
+    
+    if (target) {
+      // Special handling for text inputs
+      if (target.matches('input[type="text"], input[type="email"], input[type="tel"], textarea')) {
+        cursor.classList.remove("cursor--hover");
+        cursor.classList.add("cursor--text");
+      } else {
+        cursor.classList.remove("cursor--text");
+        cursor.classList.add("cursor--hover");
+      }
+    } else {
+      cursor.classList.remove("cursor--hover", "cursor--text");
+    }
   });
 
   // Click state
