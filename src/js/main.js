@@ -32,8 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
 function initGalleryMarquee() {
   if (!document.getElementById("galleryTrack1")) return;
 
-  const marquee1 = new InfiniteMarquee('galleryWrapper1', 'galleryTrack1', { speed: 0.5, direction: -1 });
-  const marquee2 = new InfiniteMarquee('galleryWrapper2', 'galleryTrack2', { speed: 0.5, direction: 1 });
+  // Slow down on mobile
+  const isMobile = window.innerWidth <= 768;
+  const speed = isMobile ? 0.3 : 0.5;
+
+  const marquee1 = new InfiniteMarquee('galleryWrapper1', 'galleryTrack1', { speed: speed, direction: -1 });
+  const marquee2 = new InfiniteMarquee('galleryWrapper2', 'galleryTrack2', { speed: speed, direction: 1 });
 
   const container = document.getElementById('galleryContainer');
   if (container && window.matchMedia('(hover: hover)').matches) {
