@@ -2069,11 +2069,11 @@ img {
   }
 
   .gallery-wrapper {
-    height: 250px;
+    height: 300px;
   }
 
   .gallery__item {
-    width: 300px;
+    width: 380px;
   }
 
   .hero__title {
@@ -2264,11 +2264,11 @@ img {
   }
 
   .gallery-wrapper {
-    height: 200px;
+    height: 320px;
   }
 
   .gallery__item {
-    width: 250px;
+    width: 360px;
   }
 
   .section-header--left {
@@ -2333,11 +2333,11 @@ img {
   }
 
   .gallery-wrapper {
-    height: 180px;
+    height: 280px;
   }
 
   .gallery__item {
-    width: 220px;
+    width: 320px;
   }
 
   .floating-hud {
