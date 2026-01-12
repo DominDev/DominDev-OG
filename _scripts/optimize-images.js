@@ -96,7 +96,6 @@ const path = require('path');
 const CONFIG = {
   // Ścieżki do katalogów z oryginałami
   inputDirs: [
-    'assets/img/products/originals',
     'assets/img/originals',
   ],
 
@@ -384,8 +383,8 @@ async function main() {
       continue;
     }
 
-    // Katalog wyjściowy (parent directory bez /originals)
-    const outputDir = path.dirname(inputDir);
+    // Katalog wyjściowy (zawsze w podkatalogu 'optimized')
+    const outputDir = path.join(path.dirname(inputDir), 'optimized');
     await ensureDir(outputDir);
 
     for (const image of images) {
@@ -443,7 +442,7 @@ async function watchForChanges() {
         if (!/\.(jpg|jpeg|png|webp|tiff)$/i.test(filename)) return;
 
         const fullPath = path.join(inputDir, filename);
-        const outputDir = path.dirname(inputDir);
+        const outputDir = path.join(path.dirname(inputDir), 'optimized');
 
         // Small delay to ensure file is fully written
         setTimeout(async () => {
