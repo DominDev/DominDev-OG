@@ -2068,6 +2068,11 @@ img {
     gap: 20px;
   }
 
+  /* Hide second gallery row on smaller screens */
+  #galleryWrapper2 {
+    display: none;
+  }
+
   .gallery-wrapper {
     height: 300px;
   }
