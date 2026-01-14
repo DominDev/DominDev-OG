@@ -37,7 +37,8 @@
       "Bash(node:*)",
       "Bash(npm install:*)",
       "Bash(openssl dgst:*)",
-      "Bash(openssl base64:*)"
+      "Bash(openssl base64:*)",
+      "mcp__gemini__ask_gemini"
     ],
     "ask": [
       "Read(./.env)",
