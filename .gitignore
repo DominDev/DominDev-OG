@@ -65,6 +65,12 @@ temp/
 # Keep optimized folder but ignore processing temp files
 assets/img/optimized/*.tmp
 
+# === Media sources (keep out of git) ===
+assets/**/originals/
+assets/**/raw/
+assets/**/source/
+assets/**/sources/
+
 # === Cache ===
 .cache/
 *.cache
