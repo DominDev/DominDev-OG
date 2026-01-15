@@ -17,6 +17,14 @@ const CONFIG = {
 };
 
 // Upewnij się, że katalogi istnieją
+// Upewnij się, że katalog wejściowy istnieje (stwórz go, jeśli chcesz dopiero wrzucać pliki)
+if (!fs.existsSync(CONFIG.inputDir)) {
+  fs.mkdirSync(CONFIG.inputDir, { recursive: true });
+  console.log(`[INFO] Brak katalogu wejściowego. Utworzyłem: ${CONFIG.inputDir}`);
+  console.log('[INFO] Wrzuć tam pliki wideo (np. .mp4) i uruchom skrypt ponownie.');
+  process.exit(0);
+}
+
 if (!fs.existsSync(CONFIG.outputDir)) {
   fs.mkdirSync(CONFIG.outputDir, { recursive: true });
 }

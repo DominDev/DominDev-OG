@@ -2,10 +2,22 @@
 
 ## Available slash commands
 
-- `/brief` — Start Stage 1 (ask 8–12 questions)
-- `/vision` — Start Stage 2 (propose visual direction)
-- `/tryb-szybki` — Quick fix mode, skip brief
-- `/seo-audit` — SEO + technical audit
+- `/stage-brief` — Start Stage 1 (ask 8–12 questions). Zero code.
+- `/stage-vision` — Start Stage 2 (propose visual direction, ask for approval)
+- `/mode-quick-fix` — Quick fix mode, skip brief
+- `/audit-seo` — SEO + technical audit (writes _docs/report-seo.md)
+- `/audit-a11y` — Accessibility audit (writes _docs/report-a11y.md)
+- `/audit-performance` — Performance audit (writes _docs/report-performance.md)
+- `/audit-responsive` — Responsive & mobile UX audit (writes _docs/report-responsive.md)
+- `/audit-assets` — Assets (images/fonts) audit (writes _docs/report-assets.md)
+- `/audit-html` — HTML correctness & semantics audit (writes _docs/report-html.md)
+- `/audit-css` — CSS audit (writes _docs/report-css.md)
+- `/content-copy-ux` — Copy + UX review (writes _docs/report-copy-ux.md)
+- `/content-form-review` — Forms review (writes _docs/report-forms.md)
+- `/project-cleanup` — Repo cleanup review (writes _docs/report-project-cleanup.md)
+- `/security-basics` — Frontend security basics review (writes _docs/report-security-basics.md)
+- `/deploy-checklist` — Pre-deploy checklist (writes _docs/checklist-deploy.md)
+
 
 ## Roles
 

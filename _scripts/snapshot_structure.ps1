@@ -37,7 +37,7 @@ if ($CurrentDirName -match '^_') {
 # Katalogi do wykluczenia (statyczna lista)
 $ExcludedDirsStatic = @(
     '.git',
-    '.claude',
+    
     'node_modules',
     '.vscode',
     '.idea',

@@ -70,7 +70,7 @@ $IncludedExtensions = @(
 # Katalogi do wykluczenia (statyczna lista - katalogi z prefixem "_" sa wykluczane automatycznie)
 $ExcludedDirsStatic = @(
     '.git',
-    '.claude',
+    
     'node_modules',
     '.vscode',
     '.idea',
