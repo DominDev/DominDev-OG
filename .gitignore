@@ -87,10 +87,37 @@ _docs/
 .gemini*/
 **/CLAUDE.md
 **/GEMINI.md
-# --- AI assistant / project meta (do not commit) ---
-CLAUDE.md
-GEMINI.md
 
 # === Package locks (optional - uncomment if you want to track) ===
 # package-lock.json
 # yarn.lock
+
+# === Tool caches / build outputs (extra, safe defaults) ===
+.vite/
+coverage/
+.nyc_output/
+.parcel-cache/
+.cache/
+.eslintcache
+.stylelintcache
+*.swp
+*.swo
+*.tmp
+
+# === Hosting / local tool state (do not commit) ===
+.netlify/
+.vercel/
+.firebase/
+.dynamodb/
+
+# === Framework build outputs (future-proof) ===
+.next/
+out/
+.nuxt/
+.svelte-kit/
+.astro/
+.turbo/
+dist-ssr/
+
+# === Media tooling ===
+ffmpeg2pass-*.log
