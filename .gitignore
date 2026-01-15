@@ -1,5 +1,5 @@
 # ============================================
-# DominDev-OG Project .gitignore
+# DominDev Project .gitignore
 # ============================================
 
 # === OS Generated Files ===
@@ -87,6 +87,9 @@ _docs/
 .gemini*/
 **/CLAUDE.md
 **/GEMINI.md
+# --- AI assistant / project meta (do not commit) ---
+CLAUDE.md
+GEMINI.md
 
 # === Package locks (optional - uncomment if you want to track) ===
 # package-lock.json
