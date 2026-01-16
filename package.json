@@ -2,6 +2,7 @@
   "name": "domindev-og",
   "version": "1.0.0",
   "description": "Landing page for boxing personal trainer Oskar Gajcowski",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "minify:css": "node _scripts/auto-minify-css.js",
