@@ -8,10 +8,10 @@
   </p>
 
   <p>
-    <a href="#features">Features</a> •
-    <a href="#bundles">Bundles</a> •
-    <a href="#technology">Technology</a> •
-    <a href="#demo">Live Demo</a>
+    <a href="#key-features">Features</a> •
+    <a href="#service-bundles">Bundles</a> •
+    <a href="#technology-stack">Technology</a> •
+    <a href="https://domindev.github.io/DominDev-OG/">Live Demo</a>
   </p>
 
   <br>
