@@ -8,9 +8,9 @@
   </p>
 
   <p>
-    <a href="#key-features">Features</a> •
-    <a href="#service-bundles">Bundles</a> •
-    <a href="#technology-stack">Technology</a> •
+    <a href="#features">Features</a> •
+    <a href="#bundles">Bundles</a> •
+    <a href="#technology">Technology</a> •
     <a href="https://domindev.github.io/DominDev-OG/">Live Demo</a>
   </p>
 
@@ -32,7 +32,7 @@ Whether you are a boxing champion, a personal trainer, or a fitness coach, this 
 
 ---
 
-## ✨ Key Features
+<h2 id="features">✨ Key Features</h2>
 
 ### 🏎️ **Unmatched Performance**
 We don't use heavy frameworks. We use raw, optimized code.
@@ -60,7 +60,7 @@ Be found by those who need you.
 
 ---
 
-## 📦 Service Bundles
+<h2 id="bundles">📦 Service Bundles</h2>
 
 Choose the tier that fits your business needs.
 
@@ -80,7 +80,7 @@ Choose the tier that fits your business needs.
 
 ---
 
-## 🛠️ Technology Stack
+<h2 id="technology">🛠️ Technology Stack</h2>
 
 Built with a "Performance-First" philosophy. No bloat, just power.
 
