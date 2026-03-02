@@ -3,8 +3,8 @@
  * Change BASE_URL when deploying to production domain
  */
 const CONFIG = {
-  // Current: GitHub Pages | Production: https://oskargajcowski.pl
-  BASE_URL: 'https://domindev.github.io/DominDev-OG',
+  // Production domain
+  BASE_URL: 'https://oskargajcowski.pl',
 
   // Contact Information
   PHONE: '+48 784 036 721',

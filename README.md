@@ -11,7 +11,7 @@
     <a href="#features">Features</a> •
     <a href="#bundles">Bundles</a> •
     <a href="#technology">Technology</a> •
-    <a href="https://domindev.github.io/DominDev-OG/">Live Demo</a>
+    <a href="https://oskargajcowski.pl/">Live Demo</a>
   </p>
 
   <br>

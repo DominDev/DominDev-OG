@@ -1,11 +1,11 @@
 # Robots.txt for Oskar Gajcowski - Personal Boxing Trainer
-# https://domindev.github.io/DominDev-OG/
+# https://oskargajcowski.pl/
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://domindev.github.io/DominDev-OG/sitemap.xml
+Sitemap: https://oskargajcowski.pl/sitemap.xml
 
 # Disallow development/script directories
 Disallow: /_docs/
