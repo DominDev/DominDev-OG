@@ -1769,7 +1769,7 @@ img {
   filter: drop-shadow(0 0 5px rgba(210, 43, 43, 0.6));
 }
 
-.contact__row h4 {
+.contact__row h3 {
   font-family: var(--font-heading);
   font-size: 1.2rem;
   color: var(--color-white);
