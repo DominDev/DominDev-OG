@@ -12,6 +12,8 @@
     <meta name="author" content="Oskar Gajcowski">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://oskargajcowski.pl/">
+    <link rel="alternate" hreflang="pl" href="https://oskargajcowski.pl/">
+    <link rel="alternate" hreflang="x-default" href="https://oskargajcowski.pl/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -43,8 +45,8 @@
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self' https://unpkg.com 'unsafe-inline';
-        style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
-        font-src 'self' https://fonts.gstatic.com;
+        style-src 'self' 'unsafe-inline';
+        font-src 'self';
         img-src 'self' data: https:;
         frame-src https://www.google.com;
         connect-src 'self' https://unpkg.com;
@@ -54,8 +56,6 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
 
     <!-- Preload critical assets -->
@@ -63,8 +63,9 @@
     <link rel="preload" href="src/css/style.min.css" as="style">
     <link rel="preload" href="src/js/main.min.js" as="script">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Preload critical fonts (self-hosted) -->
+    <link rel="preload" href="assets/fonts/barlow-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/oswald-700-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="src/css/style.min.css">
@@ -319,15 +320,15 @@
             <div class="container">
                 <div class="stats__grid">
                     <div class="stats__item reveal">
-                        <h3>150+</h3>
+                        <span class="stats__number">150+</span>
                         <p>Stoczonych walk</p>
                     </div>
                     <div class="stats__item reveal">
-                        <h3>2x</h3>
+                        <span class="stats__number">2x</span>
                         <p>Mistrz Polski</p>
                     </div>
                     <div class="stats__item reveal">
-                        <h3>15</h3>
+                        <span class="stats__number">15</span>
                         <p>Lat w ringu</p>
                     </div>
                 </div>

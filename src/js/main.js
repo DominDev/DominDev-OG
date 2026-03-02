@@ -611,7 +611,7 @@ function initLazyLoad() {
  * Animated Counters for Stats Section
  */
 function initAnimatedCounters() {
-  const statsItems = document.querySelectorAll(".stats__item h3");
+  const statsItems = document.querySelectorAll(".stats__number");
 
   if (statsItems.length === 0) return;
 
@@ -671,14 +671,17 @@ function initAnimatedCounters() {
   };
 
   const observerOptions = {
-    threshold: 0.5,
-    rootMargin: "0px",
+    threshold: 0.3,
+    rootMargin: "-100px 0px",
   };
 
+  // Observe parent .stats__item for better intersection detection
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const counter = counters.find((c) => c.element === entry.target);
+        // Find all counters whose elements are inside this stats__item
+        const statsNumber = entry.target.querySelector(".stats__number");
+        const counter = counters.find((c) => c.element === statsNumber);
         if (counter) {
           animateCounter(counter);
         }
@@ -687,7 +690,9 @@ function initAnimatedCounters() {
     });
   }, observerOptions);
 
-  counters.forEach((counter) => observer.observe(counter.element));
+  // Observe the parent .stats__item elements instead of the spans
+  const statsContainers = document.querySelectorAll(".stats__item");
+  statsContainers.forEach((item) => observer.observe(item));
 }
 
 /**
