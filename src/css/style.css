@@ -905,21 +905,22 @@ img {
   text-align: center;
 }
 
-.stats__item h3 {
+.stats__number {
   font-size: 3rem;
   color: var(--color-white);
   margin-bottom: var(--spacing-xs);
   font-weight: 700;
+  display: block;
 }
 
 /* Animated counter styles */
-.stats__item h3 .counter-value {
+.stats__number .counter-value {
   display: inline-block;
   color: var(--color-white);
   font-weight: 700;
 }
 
-.stats__item h3 .counter-suffix {
+.stats__number .counter-suffix {
   color: var(--color-accent-gold);
   font-weight: 700;
 }
@@ -2328,7 +2329,7 @@ img {
     font-size: 1rem;
   }
 
-  .stats__item h3 {
+  .stats__number {
     font-size: 2.5rem;
   }
 
@@ -2425,7 +2426,7 @@ img {
     font-size: 1.2rem;
   }
 
-  .stats__item h3 {
+  .stats__number {
     font-size: 2rem;
   }
 
