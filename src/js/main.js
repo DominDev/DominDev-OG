@@ -1232,7 +1232,7 @@ function initWhatsAppModal() {
     }
 
     // Call to action
-    parts.push("Chciałbym umówić się na darmowy trening wstępny!");
+    parts.push("Chciałbym umówić się na próbny trening wstępny!");
 
     return parts.join(" ");
   };
@@ -1344,7 +1344,7 @@ function initWhatsAppModal() {
     skipBtn.addEventListener("click", () => {
       if (!validateConsent()) return;
 
-      const defaultMessage = "Cześć! Chciałbym umówić się na darmowy trening wstępny.";
+      const defaultMessage = "Cześć! Chciałbym umówić się na próbny trening wstępny.";
       redirectToWhatsApp(defaultMessage);
     });
   }
