@@ -89,7 +89,7 @@ Built with a "Performance-First" philosophy. No bloat, just power.
 | **Core** | HTML5, CSS3, ES6+ | Zero dependencies, maximum speed. |
 | **Styles** | BEM Methodology | Modular, maintainable, and scalable CSS. |
 | **Icons** | Lucide Icons | Lightweight, crisp SVG icons. |
-| **Typography** | Google Fonts | Optimized delivery of Oswald & Barlow. |
+| **Typography** | Self-hosted WOFF2 | Oswald & Barlow fonts, zero external requests. |
 | **Build Tools** | Sharp, Terser, FFmpeg | Automated asset optimization pipeline. |
 
 ---
