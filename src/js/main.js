@@ -3,6 +3,7 @@
  * Vanilla JS, no dependencies except Lucide icons
  */
 
+
 // Initialize preloader immediately
 initPreloader();
 
@@ -1123,6 +1124,9 @@ function initWhatsAppModal() {
   // Phone number from config
   const phoneNumber = typeof CONFIG !== "undefined" ? CONFIG.PHONE_LINK : "48784036721";
 
+  // Pages Function endpoint
+  const WORKER_URL = '/api/whatsapp';
+
   /**
    * Open modal
    */
@@ -1192,6 +1196,13 @@ function initWhatsAppModal() {
     modal.querySelectorAll(".wa-modal__chip.selected").forEach((chip) => {
       chip.classList.remove("selected");
     });
+
+    // Reset Turnstile (auto-render mode)
+    if (typeof turnstile !== 'undefined') {
+      turnstile.reset();
+    }
+    const errorEl = document.getElementById('turnstileError');
+    if (errorEl) errorEl.style.display = 'none';
   };
 
   /**
@@ -1238,13 +1249,70 @@ function initWhatsAppModal() {
   };
 
   /**
-   * Redirect to WhatsApp with message
+   * Validate with Worker and redirect to WhatsApp
    */
-  const redirectToWhatsApp = (message) => {
-    const encodedMessage = encodeURIComponent(message);
-    const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.open(url, "_blank", "noopener,noreferrer");
-    closeModal();
+  const redirectToWhatsApp = async (useFormData = true) => {
+    // Read Turnstile token from auto-generated hidden input
+    const turnstileInput = form.querySelector('[name="cf-turnstile-response"]');
+    const turnstileToken = turnstileInput ? turnstileInput.value : '';
+
+    if (!turnstileToken) {
+      const errorEl = document.getElementById('turnstileError');
+      if (errorEl) {
+        errorEl.querySelector('span').textContent = 'Proszę ukończyć weryfikację.';
+        errorEl.style.display = 'block';
+      }
+      return;
+    }
+
+    // Show loading state on submit button
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn?.textContent;
+    if (submitBtn) {
+      submitBtn.textContent = 'Weryfikacja...';
+      submitBtn.disabled = true;
+    }
+
+    try {
+      const response = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          token: turnstileToken,
+          formData: useFormData ? formData : null,
+          phoneNumber: phoneNumber,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success && result.url) {
+        window.open(result.url, '_blank', 'noopener,noreferrer');
+        closeModal();
+      } else {
+        const errorEl = document.getElementById('turnstileError');
+        if (errorEl) {
+          errorEl.querySelector('span').textContent = result.error || 'Błąd weryfikacji.';
+          errorEl.style.display = 'block';
+        }
+        // Reset Turnstile for retry
+        if (typeof turnstile !== 'undefined') {
+          turnstile.reset();
+        }
+      }
+    } catch (error) {
+      console.error('Request failed:', error);
+      const errorEl = document.getElementById('turnstileError');
+      if (errorEl) {
+        errorEl.querySelector('span').textContent = 'Błąd połączenia. Spróbuj ponownie.';
+        errorEl.style.display = 'block';
+      }
+    } finally {
+      if (submitBtn) {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    }
   };
 
   /**
@@ -1331,21 +1399,17 @@ function initWhatsAppModal() {
   }
 
   // Form submit
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!validateConsent()) return;
-    
-    const message = buildMessage();
-    redirectToWhatsApp(message);
+    await redirectToWhatsApp(true);  // true = use formData
   });
 
   // Skip button - redirect with default message
   if (skipBtn) {
-    skipBtn.addEventListener("click", () => {
+    skipBtn.addEventListener("click", async () => {
       if (!validateConsent()) return;
-
-      const defaultMessage = "Cześć! Chciałbym umówić się na próbny trening wstępny.";
-      redirectToWhatsApp(defaultMessage);
+      await redirectToWhatsApp(false);  // false = default message
     });
   }
 }

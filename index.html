@@ -45,12 +45,12 @@
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' https://unpkg.com 'unsafe-inline';
+        script-src 'self' https://unpkg.com https://challenges.cloudflare.com 'unsafe-inline';
         style-src 'self' 'unsafe-inline';
         font-src 'self';
         img-src 'self' data: https:;
-        frame-src https://www.google.com;
-        connect-src 'self' https://unpkg.com;
+        frame-src https://www.google.com https://challenges.cloudflare.com;
+        connect-src 'self' https://unpkg.com https://challenges.cloudflare.com;
     ">
 
     <!-- Favicon & PWA -->
@@ -217,6 +217,9 @@
         ]
     }
     </script>
+
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
     <!-- Preloader - Fight Mode -->
@@ -900,6 +903,20 @@
                             Akceptuję <button type="button" class="text-link" data-privacy-trigger>Politykę Prywatności</button> i wyrażam zgodę na przetwarzanie danych w celu obsługi zgłoszenia.
                         </span>
                     </label>
+                </div>
+
+                <!-- Turnstile Widget (interaction-only: invisible for most users) -->
+                <div class="cf-turnstile"
+                     data-sitekey="0x4AAAAAAClcqIMAilkwgUV1"
+                     data-theme="dark"
+                     data-size="flexible"
+                     data-language="pl"
+                     data-appearance="interaction-only">
+                </div>
+
+                <!-- Turnstile error message (hidden by default) -->
+                <div id="turnstileError" class="wa-modal__turnstile-error" style="display: none;">
+                    <span>Weryfikacja wygasla. Sprobuj ponownie.</span>
                 </div>
 
                 <div class="wa-modal__actions">
