@@ -3317,6 +3317,25 @@ body.wa-modal-open {
   color: var(--color-white);
 }
 
+/* Turnstile Widget & Error Message */
+.cf-turnstile {
+  margin-top: 1rem;
+}
+
+.wa-modal__turnstile-error {
+  background: rgba(210, 43, 43, 0.1);
+  border: 1px solid var(--color-accent-red);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.wa-modal__turnstile-error span {
+  color: var(--color-accent-red);
+  font-size: 0.875rem;
+}
+
 /* Privacy Modal Specifics */
 .wa-modal--privacy {
   z-index: 10001; /* Above WA Modal */

@@ -130,3 +130,7 @@ dist-ssr/
 
 # === Media tooling ===
 ffmpeg2pass-*.log
+
+# === Cloudflare Wrangler ===
+.wrangler/
+.dev.vars
