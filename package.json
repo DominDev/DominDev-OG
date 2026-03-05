@@ -11,7 +11,8 @@
     "optimize:images:watch": "node _scripts/optimize-images.js --watch",
     "optimize:video": "node _scripts/optimize-video.js",
     "watch": "node _scripts/watch.js",
-    "build": "npm run optimize:images && npm run optimize:video && npm run minify:css && npm run minify:js",
+    "update:sitemap": "node _scripts/update-sitemap.js",
+    "build": "npm run update:sitemap && npm run optimize:images && npm run optimize:video && npm run minify:css && npm run minify:js",
     "dev": "npm run watch"
   },
   "devDependencies": {

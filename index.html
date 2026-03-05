@@ -45,12 +45,12 @@
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' https://unpkg.com https://challenges.cloudflare.com 'unsafe-inline';
+        script-src 'self' https://unpkg.com https://challenges.cloudflare.com https://www.googletagmanager.com https://static.cloudflareinsights.com/ 'unsafe-inline';
         style-src 'self' 'unsafe-inline';
         font-src 'self';
-        img-src 'self' data: https:;
+        img-src 'self' data: https: https://www.google-analytics.com https://www.googletagmanager.com;
         frame-src https://www.google.com https://challenges.cloudflare.com;
-        connect-src 'self' https://unpkg.com https://challenges.cloudflare.com;
+        connect-src 'self' https://unpkg.com https://challenges.cloudflare.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://cloudflareinsights.com;
     ">
 
     <!-- Favicon & PWA -->
@@ -61,8 +61,14 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
     <link rel="manifest" href="/assets/icons/site.webmanifest">
 
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H5ZZV9LVCF"></script>
+    <script src="src/js/analytics.js"></script>
+
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
 
     <!-- Preload critical assets -->
     <link rel="preload" href="assets/img/optimized/og-006-800.webp" as="image">
@@ -998,5 +1004,9 @@
             border: 0;
         }
     </style>
+
+    <!-- Cloudflare Web Analytics -->
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "ac02555a46b44ff1bd85ca6829be375d"}'></script>
 </body>
 </html>
