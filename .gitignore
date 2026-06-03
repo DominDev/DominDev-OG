@@ -134,3 +134,6 @@ ffmpeg2pass-*.log
 # === Cloudflare Wrangler ===
 .wrangler/
 .dev.vars
+
+# Local Obsidian AI memory junction
+.obsidian-memory/
